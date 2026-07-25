@@ -1,0 +1,91 @@
+swagger: '2.0'
+info:
+  title: WeFitter app insights API
+  description: This is the WeFitter API
+  termsOfService: https://www.wefitter.com/privacy/
+  contact:
+    email: hello@wefitter.com
+  license:
+    name: BSD License
+  version: v1.3
+host: api.wefitter.com
+basePath: /api/v1.3
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- BearerProfile: []
+tags:
+- name: insights
+paths:
+  /insights/bio_age:
+    parameters: []
+    get:
+      operationId: insights_bio_age_read
+      summary: Get someones biological age on a weekly basis.
+      description: ''
+      parameters:
+      - name: start_date
+        in: query
+        required: true
+        type: string
+        format: date
+      - name: end_date
+        in: query
+        required: true
+        type: string
+        format: date
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BioAge'
+      tags:
+      - insights
+definitions:
+  BioAge:
+    required:
+    - start
+    - end
+    - bio_age
+    type: object
+    properties:
+      start:
+        title: Start
+        type: string
+        format: date
+      end:
+        title: End
+        type: string
+        format: date
+      bio_age:
+        title: Bio age
+        type: number
+securityDefinitions:
+  Basic:
+    type: basic
+    description: 'Basic Authentication is used to create administrator bearer tokens.
+
+
+      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+  BearerProfile:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for logged-in profiles.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+  BearerAdmin:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for administrators.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'

@@ -1,0 +1,3412 @@
+swagger: '2.0'
+info:
+  title: WeFitter app profile API
+  description: This is the WeFitter API
+  termsOfService: https://www.wefitter.com/privacy/
+  contact:
+    email: hello@wefitter.com
+  license:
+    name: BSD License
+  version: v1.3
+host: api.wefitter.com
+basePath: /api/v1.3
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- BearerProfile: []
+tags:
+- name: profile
+  description: '
+
+    Profiles are containers for wearables data.
+
+    The profiles can be seen as an extension of users in a different system.
+
+    Profiles are anonymous objects which can participate in teams and challenges.
+
+
+    Keep in mind, listing profiles and creating profiles need an administrative bearer token, all profile specific actions
+
+    need a seperate bearer token that is returned after creating a profile. This bearer token is used in place of the
+
+    administrative bearer token. (see profile create action for more information)
+
+    '
+paths:
+  /profile/:
+    parameters: []
+    get:
+      operationId: profile_list
+      summary: List Profiles
+      description: Lists all available profiles
+      parameters:
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        type: string
+      - name: ordering
+        in: query
+        description: Which field to use when ordering the results.
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/ProfileList'
+      tags:
+      - profile
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    post:
+      operationId: profile_create
+      summary: Create Profile
+      description: '
+
+        Creates a new profile.
+
+        The bearer field contains a profile bearer token. When this is used in the Authorization header actions are performed
+
+        as that profile, which will also enable access to private data.
+
+        Using a profile bearer token disables administrative features such as creating profiles, making this token safe
+
+        for ''public'' use.
+
+        A profile bearer token has no expiration, so it remains valid as long as the profile is active.
+
+        '
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileCreated'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileCreated'
+      tags:
+      - profile
+      security:
+      - BearerAdmin: []
+      deprecated: false
+  /profile/{profile_public_id}/activity_file/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_activity_file_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - profile
+  /profile/{profile_public_id}/activity_file/{activity_id}:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    - name: activity_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_activity_file_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - profile
+  /profile/{profile_public_id}/activity_segment/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_activity_segment_list
+      summary: Activity segment
+      description: Lists segments of activities and small non-workout-like movements.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Activity'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/biometric/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_biometric_list
+      summary: Bio Metric
+      description: Lists changes in weight, height and bmi for the profile.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BioMetric'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/biometric_measurement/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_biometric_measurement_list
+      summary: Biometric Measurement
+      description: List changes in biometric measurements for the profile.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: measurement_type
+        in: query
+        required: true
+        type: string
+        enum:
+        - BLOOD_PRESSURE
+        - BODY_FAT
+        - BODY_FAT_MASS
+        - GLUCOSE
+        - SYSTOLIC_BP
+        - DIASTOLIC_BP
+        - PULSE_BP
+        - TEMPERATURE
+        - BLOOD_OXYGEN
+        - HRV
+        - VO2_MAX
+        - METABOLIC_AGE
+        - VASCULAR_AGE
+        - VISCERAL_FAT
+        - BODY_TEMPERATURE
+        - SKIN_TEMPERATURE
+        - BONE_MASS
+        - MUSCLE_MASS
+        - HYDRATION
+        - BMR
+        - FAT_RATIO
+        - SPO2
+        - OTHER
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BiometricMeasurement'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/bmi/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_bmi_list
+      summary: BMI
+      description: Presents the Body-Mass-Index over time.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BMI'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/daily_detail/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_daily_detail_list
+      summary: Daily details
+      description: Intraday data measured at a single point in time.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DailyDetail'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/daily_summary/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_daily_summary_list
+      summary: Daily Summary
+      description: Provides summarized data per day.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: deduplicate
+        in: query
+        description: If set to true, duplicates will be aggregated.
+        required: false
+        type: boolean
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DailySummary'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/detail_sample/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_detail_sample_list
+      summary: Detail Sample
+      description: Presents detail samples.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DetailSample'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/ecg_recordings/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_ecg_recordings_list
+      summary: Electrocardiograms
+      description: '
+
+        This endpoint returns a list of ECG recordings.
+
+        '
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ECGRecordings'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/ecg_recordings/data/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_ecg_recordings_data_list
+      summary: Electrocardiogram data
+      description: '
+
+        This endpoint returns an ECG recording with data as an array of tuples `[(time, value)]`.
+
+        Set the argument `date_end` to request a specific recording or leave it empty to receive the latest recording.
+
+        '
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ECGRecording'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/ecg_recordings/pdf/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_ecg_recordings_pdf_list
+      summary: Electrocardiogram PDF
+      description: Returns a PDF with generated ECG charts from a specific source and time. Contact api-support@wefitter.com to gain access.
+      parameters:
+      - name: datetime
+        in: query
+        description: The timestamp when the ECG has been recorded in the format `yyyymmddhhmmss`. e.g. `20210913132513`
+        required: true
+        type: string
+        format: date-time
+      - name: source
+        in: query
+        required: true
+        type: string
+        enum:
+        - NONE
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      responses:
+        '200':
+          description: ''
+      tags:
+      - profile
+      security:
+      - BearerProfile: []
+      deprecated: false
+  /profile/{profile_public_id}/event/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_event_list
+      summary: Event
+      description: Lists events, generic actions for which points have been awarded.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Event'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+    post:
+      operationId: profile_event_create
+      summary: Create Event
+      description: Create a new event for the profile.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Event'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Event'
+      tags:
+      - profile
+      security:
+      - BearerAdmin: []
+      deprecated: false
+  /profile/{profile_public_id}/heartrate_sample/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_heartrate_sample_list
+      summary: Heart Rate Sample
+      description: Heart Rate measured at a single point in time.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: heart_rate_detail
+        in: query
+        description: If set to true it will add heart_rate_samples field
+        required: false
+        type: boolean
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/HeartRateSample'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/heartrate_summary/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_heartrate_summary_list
+      summary: Heart Rate Summary
+      description: Presents heart rate information.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/HeartRateSummary'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/height/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_height_list
+      summary: Height
+      description: Lists changes in height for the profile.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Height'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/sleep_detail/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_sleep_detail_list
+      summary: Sleep detail
+      description: Provides sleep detail data.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SleepDetail'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/sleep_sample/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_sleep_sample_list
+      summary: Sleep Sample
+      description: 'Presents sample data for sleep: hrv, movement, heart_rate and sleep_stages,'
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SleepSample'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/sleep_summary/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_sleep_summary_list
+      summary: Sleep Summary
+      description: Provides summarized sleep data.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: detail
+        in: query
+        description: If set to true and only 1 result is returned, it will add a detail field
+        required: false
+        type: boolean
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SleepSummary'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/stress_samples/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_stress_samples_list
+      summary: Stress Sample
+      description: Presents stress samples.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StressSample'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/stress_summary/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_stress_summary_list
+      summary: Stress Summary
+      description: Presents stress summaries.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StressSummary'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/track_sample/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_track_sample_list
+      summary: Track Sample
+      description: Presents GPX track samples.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TrackSample'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/weight/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_weight_list
+      summary: Weight
+      description: Lists changes in weight for the profile.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Weight'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{profile_public_id}/workout/:
+    parameters:
+    - name: profile_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_workout_list
+      summary: Workout
+      description: Lists workouts associated with the profile. Used to be known as Activity.
+      parameters:
+      - name: cursor
+        in: query
+        description: The pagination cursor value.
+        required: false
+        type: string
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: Lower bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: date_end
+        in: query
+        description: Upper bound of date or timestamp.
+        required: false
+        type: string
+        format: date-time
+      - name: deduplicate
+        in: query
+        description: If set to true, duplicates will be aggregated.
+        required: false
+        type: boolean
+      - name: heart_rate_detail
+        in: query
+        description: If set to true and page_size is 1, it will add heart_rate_samples field
+        required: false
+        type: boolean
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Workout'
+          headers:
+            api-results-next:
+              description: Next page.
+              type: string
+            api-results-previous:
+              description: Previous page.
+              type: string
+      tags:
+      - profile
+      deprecated: false
+  /profile/{public_id}/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_read
+      summary: Get Profile
+      description: Gets a single profile
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileDetail'
+      tags:
+      - profile
+      deprecated: false
+    put:
+      operationId: profile_update
+      summary: Update profile
+      description: Updates the specified profile, excluding ID, team and public id.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileDetail'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileDetail'
+      tags:
+      - profile
+      deprecated: false
+    patch:
+      operationId: profile_partial_update
+      summary: Partial Update
+      description: Performs a partial update
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileDetail'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileDetail'
+      tags:
+      - profile
+      deprecated: false
+    delete:
+      operationId: profile_delete
+      summary: Delete Profile
+      description: Deletes the specified profile, if created by the app.
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - profile
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /profile/{public_id}/challenge/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_challenge
+      summary: Challenge
+      description: 'Provides a list of challenges where the profile can participate and is already participating in.
+
+
+        This endpoint returns a list of objects.
+
+        '
+      parameters:
+      - name: recent
+        in: query
+        description: Show challenges that have not ended in the last N weeks
+        required: false
+        type: integer
+      - name: date_start
+        in: query
+        description: 'Only return challenges that are active after this time
+
+
+          Note: this only affects challenges that are not joined.
+
+
+          Defaults to now'
+        required: false
+        type: string
+        format: date-time
+        x-nullable: true
+      - name: date_end
+        in: query
+        description: 'Only return challenges that are active before this time
+
+
+          Note: this only affects challenges that are not joined.
+
+
+          Defaults to now'
+        required: false
+        type: string
+        format: date-time
+        x-nullable: true
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileChallengeList'
+      tags:
+      - profile
+      deprecated: false
+  /profile/{public_id}/challenges/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_challenges
+      description: This docstring is used by Django Rest Framework
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileChallengeList'
+      tags:
+      - profile
+  /profile/{public_id}/connections/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: profile_connections
+      summary: Connections
+      description: 'Lists the connections available for a profile and their "state".
+
+        This endpoint returns a list of objects.
+
+        '
+      parameters:
+      - name: redirect
+        in: query
+        description: 'After connecting redirect back to this url.
+
+
+          Note: has to be a valid http url. For deeplinks (to apps) first redirect to your own backend and then deeplink from there.
+
+
+          Note: the user is only redirected on a successfull connection, otherwise an error screen is shown. (see redirect_on_error to change this)
+
+
+          Note: if this parameter is omitted, then user will see a generic success screen.'
+        required: false
+        type: string
+        minLength: 1
+      - name: redirect_on_error
+        in: query
+        description: 'If enabled, then user will also be redirected to the redirect url if an error occurs
+
+
+          Note: a query parameter ''error'' is added to the redirect url. Possible values are access_denied, unknown. New values may be added at anytime
+
+
+          Note: for backwards compatibility the default is false, but this will be changed in the next breaking release'
+        required: false
+        type: boolean
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileAppConnectionList'
+      tags:
+      - profile
+      deprecated: false
+definitions:
+  Event:
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Time at which the action was performed.
+        type: string
+        format: date-time
+      points:
+        title: Points
+        description: Amount of points awarded for the action.
+        type: number
+        x-nullable: true
+      description:
+        title: Description
+        description: Title / description of the action.
+        type: string
+        x-nullable: true
+  HeartRateSummary:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      min:
+        title: Min
+        description: Minimum heart rate.
+        type: integer
+        x-nullable: true
+      max:
+        title: Max
+        description: Maximum heart rate.
+        type: integer
+        x-nullable: true
+      average:
+        title: Average
+        description: Average heart rate.
+        type: integer
+        x-nullable: true
+      resting:
+        title: Resting
+        description: Resting heart rate.
+        type: integer
+        x-nullable: true
+  Weight:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      weight:
+        title: Weight
+        description: Weight in kg.
+        type: number
+        x-nullable: true
+  ECGRecordings:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        description: Duration of the measurement.
+        type: string
+        x-nullable: true
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      sample_frequency:
+        title: Sample_frequency
+        description: Sampling frequency of heart beats as integer in Hz.
+        type: integer
+        x-nullable: true
+      sample_count:
+        title: Sample_count
+        description: Sample count of heart beats as integer.
+        type: integer
+        x-nullable: true
+  BiometricMeasurement:
+    required:
+    - timestamp
+    - source
+    - measurement_type
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting time of the measurement.
+        type: string
+        format: date-time
+      end:
+        title: End
+        description: End time of the measurement.
+        type: string
+        format: date-time
+        x-nullable: true
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      measurement_type:
+        title: Measurement_type
+        description: Type of biometric measurement.
+        type: string
+        minLength: 1
+      description:
+        title: Description
+        description: Custom description of biometric measurement
+        type: string
+        x-nullable: true
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      value:
+        title: Value
+        description: Value of this measurement.
+        type: number
+        x-nullable: true
+      unit:
+        title: Unit
+        description: Unit of this measurement
+        type: string
+        x-nullable: true
+  StressSample:
+    required:
+    - timestamp
+    - source
+    - stress_value
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      stress_value:
+        title: Stress_value
+        description: Stress value.
+        type: integer
+  DailyDetail:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        description: Duration of the measurement.
+        type: string
+        x-nullable: true
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      steps:
+        title: Steps
+        description: Steps taken.
+        type: integer
+        x-nullable: true
+      calories:
+        title: Calories
+        description: Calories burned.
+        type: number
+        x-nullable: true
+      distance:
+        title: Distance
+        description: Distance in meters.
+        type: number
+        x-nullable: true
+  ECGRecording:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        description: Duration of the measurement.
+        type: string
+        x-nullable: true
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      sample_frequency:
+        title: Sample_frequency
+        description: Sampling frequency of heart beats as integer in Hz.
+        type: integer
+        x-nullable: true
+      sample_count:
+        title: Sample_count
+        description: Sample count of heart beats as integer.
+        type: integer
+        x-nullable: true
+      data:
+        description: ECG data, represented as [[time (s), value (mcV)], [time2 (s), value2 (mcV)]), ..
+        type: array
+        items:
+          type: string
+          x-nullable: true
+        x-nullable: true
+  ProfileCreated:
+    required:
+    - reference
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      given_name:
+        title: Given name
+        type: string
+        maxLength: 100
+      family_name:
+        title: Family name
+        type: string
+        maxLength: 100
+      nickname:
+        title: Nickname
+        type: string
+        maxLength: 100
+      gender:
+        title: Gender
+        type: string
+        enum:
+        - M
+        - F
+        - X
+      birthdate:
+        title: Birthdate
+        type: string
+        format: date
+        x-nullable: true
+      zoneinfo:
+        title: Zoneinfo
+        type: string
+        readOnly: true
+      locale:
+        title: Locale
+        type: string
+        maxLength: 5
+      reference:
+        title: Reference
+        type: string
+        maxLength: 256
+        minLength: 1
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+      bearer:
+        title: Bearer
+        description: Used for authenticating as a profile. Make this the active Authorization bearer to perform actions using this profile.
+        type: string
+        readOnly: true
+        minLength: 1
+  Height:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      height:
+        title: Height
+        description: Height in cm.
+        type: number
+        x-nullable: true
+  StressSummary:
+    required:
+    - timestamp
+    - source
+    - stress_qualifier
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      stress_qualifier:
+        title: Stress qualifier
+        description: Qualifier describing stress level.
+        type: string
+        enum:
+        - UNKNOWN
+        - CALM
+        - BALANCED
+        - STRESSFUL
+        - VERY_STRESSFUL
+      average_stress_level:
+        title: Average_stress_level
+        description: Average stress level.
+        type: integer
+        x-nullable: true
+      max_stress_level:
+        title: Max_stress_level
+        description: Maximum stress level.
+        type: integer
+        x-nullable: true
+      rest_stress_duration:
+        title: Rest stress duration
+        description: Time at restful stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      low_stress_duration:
+        title: Low stress duration
+        description: Time at low stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      medium_stress_duration:
+        title: Medium stress duration
+        description: Time at medium stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      high_stress_duration:
+        title: High stress duration
+        description: Time at high stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      stress_duration:
+        title: Stress duration
+        description: Total time in stress.
+        type: string <iso8601 duration>
+        minLength: 1
+  EnrollmentInformation:
+    type: object
+    properties:
+      team:
+        title: Team
+        type: string
+        readOnly: true
+        minLength: 1
+      team_public_id:
+        title: Team public id
+        type: string
+        readOnly: true
+        minLength: 1
+      team_size:
+        title: Team size
+        type: integer
+        readOnly: true
+      leaderboard_rank:
+        title: Leaderboard rank
+        description: Current or final rank among the participants of the challenge as determined by the relevant score.
+        type: integer
+        readOnly: true
+      leaderboard_score:
+        title: Leaderboard score
+        description: The profile's current or final score.
+        type: number
+        readOnly: true
+  DailySummary:
+    required:
+    - date
+    - source
+    type: object
+    properties:
+      date:
+        title: Date
+        description: Date of the summary.
+        type: string
+        format: date
+      distance:
+        title: Distance
+        description: Distance in meters.
+        type: number
+        x-nullable: true
+      steps:
+        title: Steps
+        description: Steps taken.
+        type: number
+        x-nullable: true
+      calories:
+        title: Calories
+        description: Calories burned.
+        type: number
+        x-nullable: true
+      active_calories:
+        title: Active_calories
+        description: Active calorie burn.
+        type: number
+        x-nullable: true
+      bmr_calories:
+        title: Bmr_calories
+        description: BMR calorie burn.
+        type: number
+        x-nullable: true
+      points:
+        title: Points
+        description: Points earned.
+        type: number
+        x-nullable: true
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      heart_rate_summary:
+        $ref: '#/definitions/HeartRateSummaryLinked'
+      stress_summary:
+        $ref: '#/definitions/StressSummaryLinked'
+  BioMetric:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      weight:
+        title: Weight
+        description: Weight in kg.
+        type: number
+        x-nullable: true
+      height:
+        title: Height
+        description: Height in cm.
+        type: number
+        x-nullable: true
+      bmi:
+        title: Bmi
+        description: Body Mass Index, automatically calculated if not entered and both weight and height are available.
+        type: number
+        x-nullable: true
+  Activity:
+    required:
+    - timestamp
+    - source
+    - type
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      type:
+        title: Type
+        description: Type of the activity.
+        type: string
+        enum:
+        - RUNNING
+        - CROSSFIT
+        - CYCLING
+        - SWIMMING
+        - OTHER
+        - ROWING
+        - WALKING
+        - MINDFULNESS
+        - YOGA
+        - STRENGTH_TRAINING
+      distance:
+        title: Distance
+        description: Distance in meters.
+        type: number
+        x-nullable: true
+      steps:
+        title: Steps
+        description: Steps taken.
+        type: number
+        x-nullable: true
+      elevation:
+        title: Elevation
+        description: Elevation gained during the workout.
+        type: number
+        x-nullable: true
+      speed:
+        title: Speed
+        description: Average speed during the workout
+        type: number
+        x-nullable: true
+      calories:
+        title: Calories
+        description: Calories burned.
+        type: number
+        x-nullable: true
+      points:
+        title: Points
+        description: Points earned.
+        type: number
+        x-nullable: true
+      in_outdoor:
+        title: In_outdoor
+        description: in- or outdoor-activity.
+        type: string
+        x-nullable: true
+      heart_rate_summary:
+        $ref: '#/definitions/HeartRateSummaryLinked'
+  BMI:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      bmi:
+        title: Bmi
+        description: Body Mass Index, automatically calculated if not entered and both weight and height are available.
+        type: number
+        x-nullable: true
+  Sample:
+    type: object
+    properties:
+      value:
+        title: Value
+        type: number / string
+        readOnly: true
+        x-nullable: true
+        description: Number for hrv and heart_rate, string for movement and sleep_stages
+  SleepDetailMinimal:
+    required:
+    - timestamp
+    - level
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      timestamp_end:
+        title: Timestamp end
+        description: Ending time of the measurement.
+        type: string
+        format: date-time
+      level:
+        title: Level
+        description: Sleep level
+        type: string
+        enum:
+        - AWAKE
+        - LIGHT
+        - DEEP
+        - REM
+        - UNKNOWN
+  SleepSample:
+    required:
+    - timestamp
+    - source
+    - data_type
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      interval:
+        title: Interval
+        description: Interval in seconds
+        type: integer
+        x-nullable: true
+      data_type:
+        title: Data type
+        description: Sleep data type
+        type: string
+        enum:
+        - HEART_RATE
+        - HRV
+        - MOVEMENT
+        - SLEEP_STAGES
+      samples:
+        description: Sample values
+        type: array
+        items:
+          $ref: '#/definitions/Sample'
+        readOnly: true
+  SleepSummary:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      timestamp_end:
+        title: Timestamp end
+        type: string
+        format: date-time
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      awake:
+        title: Awake
+        description: Time awake.
+        type: string <iso8601 duration>
+        minLength: 1
+      light:
+        title: Light
+        description: Time in light sleep.
+        type: string <iso8601 duration>
+        minLength: 1
+      deep:
+        title: Deep
+        description: Time in deep sleep.
+        type: string <iso8601 duration>
+        minLength: 1
+      rem:
+        title: Rem
+        description: Time in REM sleep.
+        type: string <iso8601 duration>
+        minLength: 1
+      sleep_score:
+        title: Sleep_score
+        description: Sleep score
+        type: integer
+        x-nullable: true
+      detail:
+        type: array
+        items:
+          $ref: '#/definitions/SleepDetailMinimal'
+      total_time_in_sleep:
+        title: Total time in sleep
+        type: string <iso8601 duration>
+        minLength: 1
+  StressSummaryLinked:
+    required:
+    - stress_qualifier
+    type: object
+    properties:
+      stress_qualifier:
+        title: Stress qualifier
+        description: Qualifier describing stress level.
+        type: string
+        enum:
+        - UNKNOWN
+        - CALM
+        - BALANCED
+        - STRESSFUL
+        - VERY_STRESSFUL
+      average_stress_level:
+        title: Average_stress_level
+        description: Average stress level.
+        type: integer
+        x-nullable: true
+      max_stress_level:
+        title: Max_stress_level
+        description: Maximum stress level.
+        type: integer
+        x-nullable: true
+      rest_stress_duration:
+        title: Rest stress duration
+        description: Time at restful stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      low_stress_duration:
+        title: Low stress duration
+        description: Time at low stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      medium_stress_duration:
+        title: Medium stress duration
+        description: Time at medium stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      high_stress_duration:
+        title: High stress duration
+        description: Time at high stress level.
+        type: string <iso8601 duration>
+        minLength: 1
+      stress_duration:
+        title: Stress duration
+        description: Total time in stress.
+        type: string <iso8601 duration>
+        minLength: 1
+  ProfileAppConnectionList:
+    type: object
+    properties:
+      display_name:
+        title: Display name
+        type: string
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        readOnly: true
+        minLength: 1
+      connected:
+        title: Connected
+        type: string
+        enum:
+        - CONNECTED
+        - ERROR
+        - NOT_CONNECTED
+        readOnly: true
+      connection_slug:
+        title: Connection slug
+        type: string
+        readOnly: true
+        minLength: 1
+      img_url:
+        title: Img url
+        type: string
+        readOnly: true
+        minLength: 1
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+  DetailSample:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      activity_type:
+        title: Activity_type
+        type: string
+        x-nullable: true
+      activity_id:
+        title: Activity_id
+        type: string
+        x-nullable: true
+      distance:
+        title: Distance
+        type: number
+        x-nullable: true
+      calories:
+        title: Calories
+        type: number
+        x-nullable: true
+      heart_rate:
+        title: Heart_rate
+        type: number
+        x-nullable: true
+  ProfileDetail:
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      given_name:
+        title: Given name
+        type: string
+        maxLength: 100
+      family_name:
+        title: Family name
+        type: string
+        maxLength: 100
+      nickname:
+        title: Nickname
+        type: string
+        maxLength: 100
+      gender:
+        title: Gender
+        type: string
+        enum:
+        - M
+        - F
+        - X
+      birthdate:
+        title: Birthdate
+        type: string
+        format: date
+        x-nullable: true
+      zoneinfo:
+        title: Zoneinfo
+        type: string
+        readOnly: true
+      locale:
+        title: Locale
+        type: string
+        maxLength: 5
+      total_calories:
+        title: Total calories
+        type: number
+      total_distance:
+        title: Total distance
+        type: number
+      total_steps:
+        title: Total steps
+        type: number
+      total_points:
+        title: Total points
+        type: number
+      total_activity_duration:
+        title: Total activity duration
+        type: string <iso8601 duration>
+        readOnly: true
+        minLength: 1
+      reference:
+        title: Reference
+        type: string
+        maxLength: 255
+      teams:
+        description: Team of which this profile is a member of
+        type: array
+        items:
+          $ref: '#/definitions/TeamProfile'
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      updated_at:
+        title: Updated at
+        type: string
+        format: date-time
+        readOnly: true
+      num_active_challenges:
+        title: Num active challenges
+        type: string
+        readOnly: true
+      num_done_challenges:
+        title: Num done challenges
+        type: string
+        readOnly: true
+      num_future_challenges:
+        title: Num future challenges
+        type: string
+        readOnly: true
+  Workout:
+    required:
+    - timestamp
+    - source
+    - type
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      type:
+        title: Type
+        description: Type of the activity.
+        type: string
+        enum:
+        - RUNNING
+        - CROSSFIT
+        - CYCLING
+        - SWIMMING
+        - OTHER
+        - ROWING
+        - WALKING
+        - MINDFULNESS
+        - YOGA
+        - STRENGTH_TRAINING
+      distance:
+        title: Distance
+        description: Distance in meters.
+        type: number
+        x-nullable: true
+      steps:
+        title: Steps
+        description: Steps taken.
+        type: number
+        x-nullable: true
+      elevation:
+        title: Elevation
+        description: Elevation gained during the workout.
+        type: number
+        x-nullable: true
+      speed:
+        title: Speed
+        description: Average speed during the workout
+        type: number
+        x-nullable: true
+      calories:
+        title: Calories
+        description: Calories burned.
+        type: number
+        x-nullable: true
+      points:
+        title: Points
+        description: Points earned.
+        type: number
+        x-nullable: true
+      in_outdoor:
+        title: In_outdoor
+        description: in- or outdoor-activity.
+        type: string
+        x-nullable: true
+      heart_rate_summary:
+        $ref: '#/definitions/HeartRateSummaryLinked'
+  TeamProfile:
+    description: Team of which this profile is a member of
+    required:
+    - name
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+  TrackSample:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      activity_type:
+        title: Activity_type
+        type: string
+        x-nullable: true
+      activity_id:
+        title: Activity_id
+        type: string
+        x-nullable: true
+      distance:
+        title: Distance
+        type: number
+        x-nullable: true
+      calories:
+        title: Calories
+        type: number
+        x-nullable: true
+  ProfileList:
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        readOnly: true
+        minLength: 1
+      gender:
+        title: Gender
+        type: string
+        enum:
+        - M
+        - F
+        - X
+      teams:
+        description: Team of which this profile is a member of
+        type: array
+        items:
+          $ref: '#/definitions/TeamProfile'
+        readOnly: true
+      reference:
+        title: Reference
+        type: string
+        maxLength: 255
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+  SleepDetail:
+    required:
+    - timestamp
+    - source
+    - level
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      timestamp_end:
+        title: Timestamp end
+        description: Ending time of the measurement.
+        type: string
+        format: date-time
+      level:
+        title: Level
+        description: Sleep level
+        type: string
+        enum:
+        - AWAKE
+        - LIGHT
+        - DEEP
+        - REM
+        - UNKNOWN
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+  HeartRateSummaryLinked:
+    type: object
+    properties:
+      min:
+        title: Min
+        description: Minimum heart rate.
+        type: integer
+        x-nullable: true
+      max:
+        title: Max
+        description: Maximum heart rate.
+        type: integer
+        x-nullable: true
+      average:
+        title: Average
+        description: Average heart rate.
+        type: integer
+        x-nullable: true
+      resting:
+        title: Resting
+        description: Resting heart rate.
+        type: integer
+        x-nullable: true
+  HeartRateSample:
+    required:
+    - timestamp
+    - source
+    type: object
+    properties:
+      timestamp:
+        title: Timestamp
+        description: Starting UTC time of the measurement.
+        type: string
+        format: date-time
+      duration:
+        title: Duration
+        type: string <iso8601 duration>
+        minLength: 1
+      source:
+        title: Source
+        description: Origin of the data.
+        type: string
+        enum:
+        - AGGREGATED
+        - ANDROID
+        - APPLE
+        - FITBIT
+        - GARMIN
+        - GOOGLE_HEALTH
+        - GOOGLEFIT
+        - HEALTHCONNECT
+        - HUAWEI
+        - MYZONE
+        - OMH
+        - OMRON
+        - OURA
+        - POLAR
+        - SAMSUNG
+        - STRAVA
+        - SUUNTO
+        - WF
+        - WHOOP
+        - WITHINGS
+      is_manual:
+        title: Is_manual
+        description: Whether the data was entered manually.
+        type: boolean
+        x-nullable: true
+      value:
+        title: Value
+        description: Measured heart rate in beats/min.
+        type: integer
+        x-nullable: true
+      min:
+        title: Min
+        description: Minimum value measured in the time window.
+        type: integer
+        x-nullable: true
+      max:
+        title: Max
+        description: Maximum value measured in the time window.
+        type: integer
+        x-nullable: true
+  ChallengeActivityType:
+    required:
+    - activity_type
+    type: object
+    properties:
+      activity_type:
+        title: Activity type
+        type: string
+        enum:
+        - RUNNING
+        - CROSSFIT
+        - CYCLING
+        - SWIMMING
+        - OTHER
+        - ROWING
+        - WALKING
+        - MINDFULNESS
+        - YOGA
+        - STRENGTH_TRAINING
+  ProfileChallengeList:
+    required:
+    - title
+    - start
+    - type
+    - goal
+    - goal_type
+    - visibility
+    - repetition
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      title:
+        title: Title
+        type: string
+        minLength: 1
+      slogan:
+        title: Slogan
+        type: string
+      description:
+        title: Description
+        type: string
+      start:
+        title: Start
+        type: string
+        format: date-time
+      end:
+        title: End
+        type: string
+        format: date-time
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        enum:
+        - INDIVIDUAL
+        - GROUP
+        - TEAM
+      goal:
+        title: Goal
+        type: string
+        enum:
+        - DAILY
+        - TOTAL
+        - WEEKLY
+        - MONTHLY
+      goal_value:
+        title: Goal value
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      goal_type:
+        title: Goal type
+        type: string
+        enum:
+        - POINTS
+        - DISTANCE
+        - CALORIES
+        - DURATION
+        - STEPS
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - PUBLIC
+        - PRIVATE
+      num_members:
+        title: Num members
+        type: string
+        readOnly: true
+      leaderboard_rank:
+        title: Leaderboard rank
+        description: Current or final rank among the participants of the challenge as determined by the relevant score.
+        type: integer
+        readOnly: true
+      leaderboard_score:
+        title: Leaderboard score
+        description: The profile's current or final score.
+        type: number
+        readOnly: true
+      is_participating:
+        title: Is participating
+        description: Does the current profile participate in this challenge?
+        type: boolean
+        readOnly: true
+      enrollment:
+        $ref: '#/definitions/EnrollmentInformation'
+      repetition:
+        title: Repetition
+        type: string
+        enum:
+        - NONE
+        - STREAK
+        - STICKTOIT
+        - GOALBREAKER
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+      data_source:
+        title: Data source
+        type: string
+        readOnly: true
+        minLength: 1
+      activity_types:
+        type: array
+        items:
+          $ref: '#/definitions/ChallengeActivityType'
+      current_period_start:
+        title: Current period start
+        description: The start (exclusive) of the current period. Null if the challenge has not started yet.
+        type: string
+        format: date-time
+        readOnly: true
+      current_period_end:
+        title: Current period end
+        description: The end (exclusive) of the current period. Null if the challenge end has passed.
+        type: string
+        format: date-time
+        readOnly: true
+      goal_cap:
+        title: Goal cap
+        description: Whether scores should be unable to surpass the goal value.
+        type: boolean
+      joined:
+        title: Joined
+        description: The timestamp when the profile joined the challenge.
+        type: string
+        format: date-time
+        readOnly: true
+securityDefinitions:
+  Basic:
+    type: basic
+    description: 'Basic Authentication is used to create administrator bearer tokens.
+
+
+      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+  BearerProfile:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for logged-in profiles.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+  BearerAdmin:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for administrators.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'

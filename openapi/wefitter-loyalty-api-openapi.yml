@@ -1,0 +1,134 @@
+swagger: '2.0'
+info:
+  title: WeFitter app loyalty API
+  description: This is the WeFitter API
+  termsOfService: https://www.wefitter.com/privacy/
+  contact:
+    email: hello@wefitter.com
+  license:
+    name: BSD License
+  version: v1.3
+host: api.wefitter.com
+basePath: /api/v1.3
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- BearerProfile: []
+tags:
+- name: loyalty
+paths:
+  /loyalty/get_recommended_products:
+    parameters: []
+    get:
+      operationId: loyalty_get_recommended_products_list
+      description: ''
+      parameters:
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/RecommendedProducts'
+      tags:
+      - loyalty
+  /loyalty/get_shoppingcart_link:
+    parameters: []
+    get:
+      operationId: loyalty_get_shoppingcart_link_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ShoppingCart'
+      tags:
+      - loyalty
+definitions:
+  ShoppingCart:
+    required:
+    - redirect_url
+    type: object
+    properties:
+      redirect_url:
+        title: Redirect url
+        type: string
+        maxLength: 256
+        minLength: 1
+  RecommendedProducts:
+    required:
+    - name
+    type: object
+    properties:
+      article_number:
+        title: Article number
+        type: integer
+        maximum: 9223372036854775807
+        minimum: -9223372036854775808
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      price:
+        title: Price
+        type: number
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        maxLength: 200
+securityDefinitions:
+  Basic:
+    type: basic
+    description: 'Basic Authentication is used to create administrator bearer tokens.
+
+
+      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+  BearerProfile:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for logged-in profiles.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+  BearerAdmin:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for administrators.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'

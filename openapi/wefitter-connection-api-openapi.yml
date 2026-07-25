@@ -1,0 +1,114 @@
+swagger: '2.0'
+info:
+  title: WeFitter app connection API
+  description: This is the WeFitter API
+  termsOfService: https://www.wefitter.com/privacy/
+  contact:
+    email: hello@wefitter.com
+  license:
+    name: BSD License
+  version: v1.3
+host: api.wefitter.com
+basePath: /api/v1.3
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- BearerProfile: []
+tags:
+- name: connection
+  description: Connections are the links between profiles and their wearables.
+paths:
+  /connection/{connection_slug}/connect/:
+    parameters:
+    - name: connection_slug
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: connection_connect_create
+      summary: Connect wearable
+      description: Get OAuth URL for this connection.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileAsProfilePublicId'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppConnectionUrl'
+      tags:
+      - connection
+      deprecated: false
+    delete:
+      operationId: connection_connect_delete
+      summary: Disconnect Wearable
+      description: Disconnect a wearables connection
+      parameters:
+      - name: profile
+        in: query
+        description: A profile public_id is expected
+        required: true
+        type: string
+        format: uuid
+      responses:
+        '200':
+          description: OK
+      tags:
+      - connection
+      deprecated: false
+definitions:
+  ProfileAsProfilePublicId:
+    required:
+    - profile
+    type: object
+    properties:
+      profile:
+        title: Profile
+        description: A profile public_id is expected
+        type: string
+        format: uuid
+      joined:
+        title: Joined
+        description: The timestamp when the profile/team joined the challenge.
+        type: string
+        format: date-time
+  AppConnectionUrl:
+    required:
+    - next
+    type: object
+    properties:
+      next:
+        title: Next
+        type: string
+        format: uri
+        minLength: 1
+securityDefinitions:
+  Basic:
+    type: basic
+    description: 'Basic Authentication is used to create administrator bearer tokens.
+
+
+      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+  BearerProfile:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for logged-in profiles.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+  BearerAdmin:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for administrators.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'

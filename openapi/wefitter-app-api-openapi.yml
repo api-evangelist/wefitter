@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  title: WeFitter app API
+  description: This is the WeFitter API
+  termsOfService: https://www.wefitter.com/privacy/
+  contact:
+    email: hello@wefitter.com
+  license:
+    name: BSD License
+  version: v1.3
+host: api.wefitter.com
+basePath: /api/v1.3
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- BearerProfile: []
+tags:
+- name: app
+paths:
+  /app/totals/:
+    parameters: []
+    get:
+      operationId: app_totals_list
+      summary: Totals
+      description: Total values for calories, distance, steps, points and activity duration over all profiles in the app.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppTotals'
+      tags:
+      - app
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+definitions:
+  AppTotals:
+    type: object
+    properties:
+      total_calories:
+        title: Total calories
+        type: number
+      total_distance:
+        title: Total distance
+        type: number
+      total_steps:
+        title: Total steps
+        type: number
+      total_points:
+        title: Total points
+        type: number
+      total_activity_duration:
+        title: Total activity duration
+        type: string <iso8601 duration>
+        minLength: 1
+securityDefinitions:
+  Basic:
+    type: basic
+    description: 'Basic Authentication is used to create administrator bearer tokens.
+
+
+      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+  BearerProfile:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for logged-in profiles.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+  BearerAdmin:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for administrators.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'

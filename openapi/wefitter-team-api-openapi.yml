@@ -1,0 +1,463 @@
+swagger: '2.0'
+info:
+  title: WeFitter app team API
+  description: This is the WeFitter API
+  termsOfService: https://www.wefitter.com/privacy/
+  contact:
+    email: hello@wefitter.com
+  license:
+    name: BSD License
+  version: v1.3
+host: api.wefitter.com
+basePath: /api/v1.3
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- BearerProfile: []
+tags:
+- name: team
+paths:
+  /team/:
+    parameters: []
+    get:
+      operationId: team_list
+      summary: List Teams
+      description: List all available teams
+      parameters:
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/TeamList'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    post:
+      operationId: team_create
+      summary: Create Team
+      description: Creates a new team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/TeamDetail'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TeamDetail'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /team/{public_id}/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: team_read
+      summary: Team
+      description: Get a single team
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/TeamDetail'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    put:
+      operationId: team_update
+      summary: Edit Team
+      description: Creates a new team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/TeamDetail'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/TeamDetail'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    patch:
+      operationId: team_partial_update
+      summary: Partial Edit a Team
+      description: Creates a new team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/TeamDetail'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/TeamDetail'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    delete:
+      operationId: team_delete
+      summary: Deletes a Team
+      description: Deletes an existing team
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /team/{public_id}/member/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: team_member_create
+      summary: Add member
+      description: Add member to a team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileAsProfilePublicId'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileAsProfilePublicId'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    put:
+      operationId: team_member_update
+      summary: Add member
+      description: Add member to a team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileAsProfilePublicId'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileAsProfilePublicId'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    delete:
+      operationId: team_member_delete
+      summary: Remove member
+      description: Remove a member from the team
+      parameters:
+      - name: profile
+        in: query
+        description: A profile public_id is expected
+        required: true
+        type: string
+        format: uuid
+      responses:
+        '204':
+          description: ''
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /team/{public_id}/members/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: team_members_create
+      summary: Add members
+      description: Add members to a team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsList'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsList'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      deprecated: false
+    put:
+      operationId: team_members_update
+      summary: Add members
+      description: Add members to a team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsList'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsList'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      deprecated: false
+  /team/{public_id}/remove_members/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: team_remove_members
+      summary: Remove members
+      description: Remove members from the team
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsList'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsList'
+      tags:
+      - team
+      security:
+      - BearerAdmin: []
+      deprecated: false
+definitions:
+  TeamList:
+    required:
+    - name
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      num_members:
+        title: Num members
+        type: string
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+  ProfilePublicIdsList:
+    required:
+    - profiles
+    type: object
+    properties:
+      profiles:
+        type: array
+        items:
+          type: string
+          format: uuid
+      is_active:
+        title: Is active
+        description: 'Whether profile actively participates in challenge.
+
+
+          While inactive, scores/leaderboard will not be updated but still be visible.'
+        type: boolean
+      joined:
+        title: Joined
+        description: The timestamp when the profile/team joined the challenge.
+        type: string
+        format: date-time
+  TeamDetail:
+    required:
+    - name
+    - description
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      num_members:
+        title: Num members
+        type: string
+        readOnly: true
+      members:
+        description: List of members in this team
+        type: array
+        items:
+          $ref: '#/definitions/ProfileTeam'
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        minLength: 1
+  ProfileTeam:
+    description: List of members in this team
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        readOnly: true
+        minLength: 1
+      reference:
+        title: Reference
+        type: string
+        maxLength: 255
+  ProfileAsProfilePublicId:
+    required:
+    - profile
+    type: object
+    properties:
+      profile:
+        title: Profile
+        description: A profile public_id is expected
+        type: string
+        format: uuid
+      joined:
+        title: Joined
+        description: The timestamp when the profile/team joined the challenge.
+        type: string
+        format: date-time
+securityDefinitions:
+  Basic:
+    type: basic
+    description: 'Basic Authentication is used to create administrator bearer tokens.
+
+
+      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+  BearerProfile:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for logged-in profiles.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+  BearerAdmin:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for administrators.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'

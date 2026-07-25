@@ -1,0 +1,1218 @@
+swagger: '2.0'
+info:
+  title: WeFitter app challenge API
+  description: This is the WeFitter API
+  termsOfService: https://www.wefitter.com/privacy/
+  contact:
+    email: hello@wefitter.com
+  license:
+    name: BSD License
+  version: v1.3
+host: api.wefitter.com
+basePath: /api/v1.3
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- BearerProfile: []
+tags:
+- name: challenge
+  description: "\nWeFitter API’s challenge engine will bring endless engagement to your platform.\nFor more information about the possibilities in challenges please go to https://www.wefitter.com/en-us/features/gamification/\n\nChallenges have multilanguage support on the fields: `Title`, `Slogan`, and `Description`.\nBy default, challenges get the default-language that is configured in the app. Whenever a challenge is requested through the API this challenge will be presented in the default language.\nIf another language is preferred, this can be requested by adding the header parameter `Accept-Language` stating the language short code (ex. `en` for english). If this language short code is not present in the title of the challenge, the default language will be returned.\n\nThese translation fields contain JSON strings, for example:\n```{\"en\":\"this is the English title\",\"nl\":\"this is the Dutch title\"}```\nSo to create a multilanguage challenge, please provide the title, slogan, and description field as json strings, be aware that because of serialization this should be formed with backward slashes:\n\n\n<table><tbody>\n    <tr><td>\n{\n\n\"title\": \"{\\\"en\\\":\\\"this is the English title\\\", \\\"nl\\\":\\\"this is the dutch title\\\"}\",\n\n\"slogan\": \"{\\\"en\\\":\\\"this is the English title\\\", \\\"nl\\\":\\\"this is the dutch slogan\\\"}\",\n\n\"description\": \"{\\\"en\\\":\\\"this is the English title\\\", \\\"nl\\\":\\\"this is the dutch description\\\"}\",\n\n}\n</td></tr>\n</tbody></table>\n\n"
+paths:
+  /challenge/:
+    parameters: []
+    get:
+      operationId: challenge_list
+      summary: List Challenges
+      description: Lists all available challenges
+      parameters:
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        type: integer
+      - name: recent
+        in: query
+        description: Show challenges that have not ended in the last N weeks
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/ChallengeList'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    post:
+      operationId: challenge_create
+      summary: Create challenge
+      description: Creates a new challenge
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ChallengeDetail'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ChallengeDetail'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      deprecated: false
+  /challenge/{challenge_public_id}/team/:
+    parameters:
+    - name: challenge_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: challenge_team_list
+      summary: Team leaderboard
+      description: 'List the standings of different teams in challenges (don''t have to be team challenges).
+
+        This endpoint returns a list of objects.
+
+        '
+      parameters:
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        type: integer
+      - name: date_range
+        in: query
+        description: Index of the time period use
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/LeaderboardTeam'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /challenge/{challenge_public_id}/team/{team_public_id}/:
+    parameters:
+    - name: challenge_public_id
+      in: path
+      required: true
+      type: string
+    - name: team_public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: challenge_team_read
+      summary: Team contribution
+      description: 'List team members'' contribution to the challenge.
+
+        This endpoint returns a list of objects.
+
+        '
+      parameters:
+      - name: date_range
+        in: query
+        description: Index of the time period use
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/LeaderboardProfile'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /challenge/{public_id}/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: challenge_read
+      summary: Get Challenge
+      description: Gets a single challenge
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ChallengeDetail'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    put:
+      operationId: challenge_update
+      summary: Edit challenge
+      description: Edits a challenge
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ChallengeDetail'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ChallengeDetail'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      deprecated: false
+    patch:
+      operationId: challenge_partial_update
+      summary: Partial edit challenge
+      description: Edits a challenge
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ChallengeDetail'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ChallengeDetail'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      deprecated: false
+    delete:
+      operationId: challenge_delete
+      summary: Delete challenge
+      description: deletes a challenge
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      deprecated: false
+  /challenge/{public_id}/deactivate_member/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: challenge_deactivate_member_create
+      summary: Deactivate member
+      description: Deactivate a member from the challenge
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      - name: profile
+        in: query
+        description: A profile public_id is expected
+        required: true
+        type: string
+        format: uuid
+      - name: team
+        in: query
+        description: A team public_id is expected
+        required: false
+        type: string
+        format: uuid
+      - name: is_active
+        in: query
+        description: 'Whether profile actively participates in challenge.
+
+
+          While inactive, scores/leaderboard will not be updated but still be visible.'
+        required: false
+        type: boolean
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    put:
+      operationId: challenge_deactivate_member_update
+      description: This docstring is used by Django Rest Framework
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      tags:
+      - challenge
+  /challenge/{public_id}/deactivate_members/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: challenge_deactivate_members_create
+      summary: Deactivate members
+      description: Deactivate multiple members from the challenge
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      - name: profile
+        in: query
+        description: A profile public_id is expected
+        required: true
+        type: string
+        format: uuid
+      - name: team
+        in: query
+        description: A team public_id is expected
+        required: false
+        type: string
+        format: uuid
+      - name: is_active
+        in: query
+        description: 'Whether profile actively participates in challenge.
+
+
+          While inactive, scores/leaderboard will not be updated but still be visible.'
+        required: false
+        type: boolean
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    put:
+      operationId: challenge_deactivate_members_update
+      description: This docstring is used by Django Rest Framework
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      tags:
+      - challenge
+  /challenge/{public_id}/leaderboard/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: challenge_leaderboard
+      summary: Leaderboard
+      description: 'Displays the leaderboard for a challenge.
+
+        This endpoint returns a list of objects.
+
+        '
+      parameters:
+      - name: date_range
+        in: query
+        description: Index of the time period use
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/LeaderboardProfileAndTeam'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /challenge/{public_id}/leaderboard_history/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: challenge_leaderboard_history
+      summary: Leaderboard history
+      description: 'Retrieve the scores of the authenticated profile for all periods since the profile joined the challenge.
+
+        This endpoint returns a list of objects.
+
+        '
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/LeaderboardHistory'
+      tags:
+      - challenge
+      security:
+      - BearerProfile: []
+      deprecated: false
+  /challenge/{public_id}/member/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: challenge_member_create
+      summary: Add member
+      description: 'Add member to a team.
+
+
+        Note: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is
+
+        used. Do note that this is a temporary fix and may be removed at any time.
+
+        '
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    put:
+      operationId: challenge_member_update
+      summary: Add member
+      description: 'Add member to a team.
+
+
+        Note: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is
+
+        used. Do note that this is a temporary fix and may be removed at any time.
+
+        '
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfileAsProfilePublicIdAndTeamAsTeamPublicId'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    delete:
+      operationId: challenge_member_delete
+      summary: Remove member
+      description: Remove a member from the challenge
+      parameters:
+      - name: profile
+        in: query
+        description: A profile public_id is expected
+        required: true
+        type: string
+        format: uuid
+      responses:
+        '204':
+          description: ''
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /challenge/{public_id}/members/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: challenge_members_read
+      summary: Get members
+      description: Get a paginated list of members enrolled to a Challenge
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ChallengeDetail'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+    post:
+      operationId: challenge_members_create
+      summary: Add members
+      description: 'Add members to a team.
+
+
+        Note: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is
+
+        used. Do note that this is a temporary fix and may be removed at any time.
+
+
+        Note: for the GET/POST endpoint an admin bearer token is required, while the GET also accepts profile bearer tokens'
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      deprecated: false
+    put:
+      operationId: challenge_members_update
+      summary: Add members
+      description: 'Add members to a team.
+
+
+        Note: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is
+
+        used. Do note that this is a temporary fix and may be removed at any time.
+
+
+        Note: for the GET/POST endpoint an admin bearer token is required, while the GET also accepts profile bearer tokens'
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      deprecated: false
+  /challenge/{public_id}/periods/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    get:
+      operationId: challenge_periods
+      summary: Periods
+      description: 'Get all periods for the challenge.
+
+        This endpoint returns a list of objects.
+
+        '
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ChallengePeriod'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      - BearerProfile: []
+      deprecated: false
+  /challenge/{public_id}/remove_members/:
+    parameters:
+    - name: public_id
+      in: path
+      required: true
+      type: string
+    post:
+      operationId: challenge_remove_members
+      summary: Remove members
+      description: Remove members from the challenge
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProfilePublicIdsListAndTeamAsPublicId'
+      tags:
+      - challenge
+      security:
+      - BearerAdmin: []
+      deprecated: false
+definitions:
+  ChallengePeriod:
+    type: object
+    properties:
+      start:
+        title: Start
+        type: string
+        format: date-time
+        readOnly: true
+      end:
+        title: End
+        type: string
+        format: date-time
+        readOnly: true
+  LeaderboardHistory:
+    type: object
+    properties:
+      score:
+        title: Score
+        type: number
+        readOnly: true
+      start:
+        title: Start
+        type: string
+        format: date-time
+        readOnly: true
+      end:
+        title: End
+        type: string
+        format: date-time
+        readOnly: true
+  ProfilePublicIdsListAndTeamAsPublicId:
+    required:
+    - profiles
+    type: object
+    properties:
+      profiles:
+        type: array
+        items:
+          type: string
+          format: uuid
+      is_active:
+        title: Is active
+        description: 'Whether profile actively participates in challenge.
+
+
+          While inactive, scores/leaderboard will not be updated but still be visible.'
+        type: boolean
+      team:
+        title: Team
+        description: A team public_id is expected
+        type: string
+        format: uuid
+      joined:
+        title: Joined
+        description: The timestamp when the profile/team joined the challenge.
+        type: string
+        format: date-time
+  LeaderboardProfile:
+    required:
+    - avatar
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        readOnly: true
+        minLength: 1
+      gender:
+        title: Gender
+        type: string
+        enum:
+        - M
+        - F
+        - X
+      teams:
+        description: Team of which this profile is a member of
+        type: array
+        items:
+          $ref: '#/definitions/TeamProfile'
+        readOnly: true
+      reference:
+        title: Reference
+        type: string
+        readOnly: true
+        minLength: 1
+      score:
+        title: Score
+        type: number
+        readOnly: true
+      position:
+        title: Position
+        type: integer
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+  LeaderboardProfileAndTeam:
+    required:
+    - avatar
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        readOnly: true
+        minLength: 1
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      score:
+        title: Score
+        type: number
+        readOnly: true
+      position:
+        title: Position
+        type: integer
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+  LeaderboardTeam:
+    required:
+    - name
+    - avatar
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      num_members:
+        title: Num members
+        type: string
+        readOnly: true
+      score:
+        title: Score
+        type: number
+        readOnly: true
+      position:
+        title: Position
+        type: integer
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+  TeamProfile:
+    description: Team of which this profile is a member of
+    required:
+    - name
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 100
+        minLength: 1
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+  ChallengeDetail:
+    required:
+    - title
+    - start
+    - type
+    - goal
+    - goal_type
+    - visibility
+    - calculation_method
+    - enrollment_method
+    - repetition
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      title:
+        title: Title
+        type: string
+        minLength: 1
+      slogan:
+        title: Slogan
+        type: string
+      description:
+        title: Description
+        type: string
+      start:
+        title: Start
+        type: string
+        format: date-time
+      end:
+        title: End
+        type: string
+        format: date-time
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        enum:
+        - INDIVIDUAL
+        - GROUP
+        - TEAM
+      goal:
+        title: Goal
+        type: string
+        enum:
+        - DAILY
+        - TOTAL
+        - WEEKLY
+        - MONTHLY
+      goal_value:
+        title: Goal value
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      goal_type:
+        title: Goal type
+        type: string
+        enum:
+        - POINTS
+        - DISTANCE
+        - CALORIES
+        - DURATION
+        - STEPS
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - PUBLIC
+        - PRIVATE
+      num_members:
+        title: Num members
+        type: string
+        readOnly: true
+      calculation_method:
+        title: Calculation method
+        type: string
+        enum:
+        - SUM
+        - AVERAGE
+      goal_progress:
+        title: Goal progress
+        description: 'Progress towards the goal, from perspective of profile whose bearer is used for authentication: can be an individual/team/global score. When goal is duration, this is the duration in seconds. When an admin token is used, returns 0.0.'
+        type: number
+        readOnly: true
+      enrollment_method:
+        title: Enrollment method
+        type: string
+        enum:
+        - AUTOMATIC
+        - MANUAL
+      default_enrollment_time:
+        title: Default enrollment time
+        type: string
+        enum:
+        - CHALLENGE_START
+        - ENROLLMENT_TIME
+      repetition:
+        title: Repetition
+        type: string
+        enum:
+        - NONE
+        - STREAK
+        - STICKTOIT
+        - GOALBREAKER
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+      data_source:
+        title: Data source
+        type: string
+        readOnly: true
+        minLength: 1
+      activity_types:
+        type: array
+        items:
+          $ref: '#/definitions/ChallengeActivityType'
+      current_period_start:
+        title: Current period start
+        description: The start (exclusive) of the current period. Null if the challenge has not started yet.
+        type: string
+        format: date-time
+        readOnly: true
+      current_period_end:
+        title: Current period end
+        description: The end (exclusive) of the current period. Null if the challenge end has passed.
+        type: string
+        format: date-time
+        readOnly: true
+      goal_cap:
+        title: Goal cap
+        description: Whether scores should be unable to surpass the goal value.
+        type: boolean
+      total_calories:
+        title: Total calories
+        type: number
+        readOnly: true
+      total_distance:
+        title: Total distance
+        type: number
+        readOnly: true
+      total_steps:
+        title: Total steps
+        type: number
+        readOnly: true
+      total_points:
+        title: Total points
+        type: number
+        readOnly: true
+      total_activity_duration:
+        title: Total activity duration
+        type: string <iso8601 duration>
+        readOnly: true
+        minLength: 1
+  ChallengeActivityType:
+    required:
+    - activity_type
+    type: object
+    properties:
+      activity_type:
+        title: Activity type
+        type: string
+        enum:
+        - RUNNING
+        - CROSSFIT
+        - CYCLING
+        - SWIMMING
+        - OTHER
+        - ROWING
+        - WALKING
+        - MINDFULNESS
+        - YOGA
+        - STRENGTH_TRAINING
+  ChallengeList:
+    required:
+    - title
+    - start
+    - type
+    - goal
+    - goal_type
+    - visibility
+    - repetition
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      public_id:
+        title: Public id
+        type: string
+        format: uuid
+        readOnly: true
+      title:
+        title: Title
+        type: string
+        minLength: 1
+      slogan:
+        title: Slogan
+        type: string
+      description:
+        title: Description
+        type: string
+      start:
+        title: Start
+        type: string
+        format: date-time
+      end:
+        title: End
+        type: string
+        format: date-time
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        enum:
+        - INDIVIDUAL
+        - GROUP
+        - TEAM
+      goal:
+        title: Goal
+        type: string
+        enum:
+        - DAILY
+        - TOTAL
+        - WEEKLY
+        - MONTHLY
+      goal_value:
+        title: Goal value
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      goal_type:
+        title: Goal type
+        type: string
+        enum:
+        - POINTS
+        - DISTANCE
+        - CALORIES
+        - DURATION
+        - STEPS
+      visibility:
+        title: Visibility
+        type: string
+        enum:
+        - PUBLIC
+        - PRIVATE
+      num_members:
+        title: Num members
+        type: string
+        readOnly: true
+      repetition:
+        title: Repetition
+        type: string
+        enum:
+        - NONE
+        - STREAK
+        - STICKTOIT
+        - GOALBREAKER
+      avatar:
+        title: Avatar
+        type: string
+        format: uri
+        minLength: 1
+        x-nullable: true
+      data_source:
+        title: Data source
+        type: string
+        readOnly: true
+        minLength: 1
+      activity_types:
+        type: array
+        items:
+          $ref: '#/definitions/ChallengeActivityType'
+      current_period_start:
+        title: Current period start
+        description: The start (exclusive) of the current period. Null if the challenge has not started yet.
+        type: string
+        format: date-time
+        readOnly: true
+      current_period_end:
+        title: Current period end
+        description: The end (exclusive) of the current period. Null if the challenge end has passed.
+        type: string
+        format: date-time
+        readOnly: true
+      goal_cap:
+        title: Goal cap
+        description: Whether scores should be unable to surpass the goal value.
+        type: boolean
+  ProfileAsProfilePublicIdAndTeamAsTeamPublicId:
+    required:
+    - profile
+    type: object
+    properties:
+      profile:
+        title: Profile
+        description: A profile public_id is expected
+        type: string
+        format: uuid
+      team:
+        title: Team
+        description: A team public_id is expected
+        type: string
+        format: uuid
+      is_active:
+        title: Is active
+        description: 'Whether profile actively participates in challenge.
+
+
+          While inactive, scores/leaderboard will not be updated but still be visible.'
+        type: boolean
+      joined:
+        title: Joined
+        description: The timestamp when the profile/team joined the challenge.
+        type: string
+        format: date-time
+securityDefinitions:
+  Basic:
+    type: basic
+    description: 'Basic Authentication is used to create administrator bearer tokens.
+
+
+      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+  BearerProfile:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for logged-in profiles.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+  BearerAdmin:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Bearer authentication for administrators.
+
+
+      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
