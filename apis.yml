@@ -1,25 +1,333 @@
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
 aid: wefitter
 name: WeFitter
-description: WeFitter is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  WeFitter is a health and fitness data platform ("one API to access wearable data,
+  gamification and AI") operated by Thunderbyte.AI in Groningen, Netherlands. Its
+  REST API aggregates health and activity data from 300+ wearables and fitness apps
+  — Fitbit, Garmin, Google Fit, Apple Health, Withings, Polar, Oura, Whoop, Samsung
+  Health, Huawei and more — into a single unified, deduplicated data model, and
+  layers gamification (challenges, leaderboards, teams, points) and AI insights
+  (biological age, recommendations) on top. Organizations use it to build corporate
+  wellbeing, digital fitness, e-health and insurance solutions. WeFitter also ships
+  mobile SDK bridges for Apple Health, Samsung Health and Android Health Connect.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.wefitter.com/static/frontend/img/website/wefitter.png
 url: https://raw.githubusercontent.com/api-evangelist/wefitter/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-operator: Thunderbyte.AI
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Health
+- Fitness
+- Wearables
+- Health Data
+- Wellbeing
+- Gamification
+- Digital Health
+- Insurance
+- Activity Tracking
+apis:
+- aid: wefitter:wefitter-app-api
+  name: WeFitter app API
+  description: The app API from WeFitter — 1 operation(s) for app.
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - app
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-app-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-challenge-api
+  name: WeFitter challenge API
+  description: >-
+    WeFitter API’s challenge engine will bring endless engagement to your platform.
+
+    For more information about the possibilities in challenges please go to https://www.wefitter.com/en-us/features/gamification/
+
+
+    Challenges have multilanguage support on the fields: `Title`, `Slogan`, and `Description`.
+
+    By default, challenges get the default-language that is configured in the app. Whenever a challenge
+    is requested through the API this challenge will be presented in the default language.
+
+    If another language is preferred, this can be requested by adding the header parameter `Accept-Language`
+    stating the language short code (ex. `en` for english). If this language short code is not present
+    in the title of the challenge, the default language will be returned.
+
+
+    These translation fields contain JSON strings, for example:
+
+    ```{"en":"this is the English title","nl":"this is the Dutch title"}```
+
+    So to create a multilanguage challenge, please provide the title, slogan, and description field as
+    json strings, be aware that because of serialization this should be formed with backward slashes:
+
+
+
+    <table><tbody>
+        <tr><td>
+    {
+
+
+    "title": "{\"en\":\"this is the English title\", \"nl\":\"this is the dutch title\"}",
+
+
+    "slogan": "{\"en\":\"this is the English title\", \"nl\":\"this is the dutch slogan\"}",
+
+
+    "description": "{\"en\":\"this is the English title\", \"nl\":\"this is the dutch description\"}",
+
+
+    }
+
+    </td></tr>
+
+    </tbody></table>
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - challenge
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-challenge-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-connection-api
+  name: WeFitter connection API
+  description: Connections are the links between profiles and their wearables.
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - connection
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-connection-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-insights-api
+  name: WeFitter insights API
+  description: The insights API from WeFitter — 1 operation(s) for insights.
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - insights
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-insights-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-loyalty-api
+  name: WeFitter loyalty API
+  description: The loyalty API from WeFitter — 2 operation(s) for loyalty.
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - loyalty
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-loyalty-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-notification-api
+  name: WeFitter notification API
+  description: >-
+    Send a notification to all devices for the specified profiles
+
+    The data will be sent to the client in the following format:
+
+    ```
+
+    {
+            "app": <app public id>,
+            "title": <title>,
+            "body": <body>,
+            "link": <optional link>
+    }
+
+    ```
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - notification
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-notification-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-profile-api
+  name: WeFitter profile API
+  description: >-
+    Profiles are containers for wearables data.
+
+    The profiles can be seen as an extension of users in a different system.
+
+    Profiles are anonymous objects which can participate in teams and challenges.
+
+
+    Keep in mind, listing profiles and creating profiles need an administrative bearer token, all profile
+    specific actions
+
+    need a seperate bearer token that is returned after creating a profile. This bearer token is used
+    in place of the
+
+    administrative bearer token. (see profile create action for more information)
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - profile
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-profile-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-team-api
+  name: WeFitter team API
+  description: The team API from WeFitter — 5 operation(s) for team.
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - team
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-team-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
+- aid: wefitter:wefitter-token-api
+  name: WeFitter token API
+  description: >-
+    <p>
+
+    Before any calls can be made to wefitter, BasicAuth is needed to verify the identity of the requesting
+    party.
+
+    This call will result into a Bearer token which has administrator privileges and is valid for 1 day.
+
+    This token can be used to create profiles, challenges, etc.
+
+    </p>
+
+
+    <p>
+
+    The returned bearer is a JWT (<a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JSON Web Token</a>).
+
+    </p>
+  humanURL: https://www.wefitter.com/en-us/developers/
+  baseURL: https://api.wefitter.com/api/v1.3
+  tags:
+  - token
+  properties:
+  - type: OpenAPI
+    url: openapi/wefitter-token-api-openapi.yml
+  - type: Swagger
+    url: https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+  - type: APIReference
+    url: https://api.wefitter.com/api/v1.3/redoc/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://www.wefitter.com/en-us/developers/
+- type: Documentation
+  url: https://www.wefitter.com/en-us/developers/documentation/
+- type: GettingStarted
+  url: https://www.wefitter.com/en-us/developers/getting-started/
+- type: APIReference
+  url: https://api.wefitter.com/api/v1.3/redoc/
+- type: Guides
+  url: https://www.wefitter.com/en-us/developers/guides/
+- type: Support
+  url: https://developers.wefitter.com/support
+- type: Blog
+  url: https://www.wefitter.com/en-us/resources/blog/
+- type: ChangeLog
+  url: https://www.wefitter.com/en-us/developers/changelog/
+- type: GitHubOrganization
+  url: https://github.com/wefitter
+- type: SignUp
+  url: https://api.wefitter.com/dashboard
+- type: TermsOfService
+  url: https://www.wefitter.com/en-us/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.wefitter.com/en-us/privacy-policy/
+- type: OpenAPI
+  url: openapi/wefitter-openapi-original.json
+- type: Overlay
+  url: overlays/wefitter-openapi-overlay.yaml
+- type: Packages
+  url: packages/wefitter-packages.yml
+- type: SDKs
+  url: packages/wefitter-packages.yml
+- type: MCPServer
+  url: mcp/wefitter-mcp.yml
+- type: LLMsTxt
+  url: llms/wefitter-llms.txt
+- type: Conformance
+  url: conformance/wefitter-conformance.yml
+- type: ErrorCatalog
+  url: errors/wefitter-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/wefitter-lifecycle.yml
+- type: ChangeLog
+  url: changelog/wefitter-changelog.yml
+- type: Conventions
+  url: conventions/wefitter-conventions.yml
+- type: DataModel
+  url: data-model/wefitter-data-model.yml
+- type: Webhooks
+  url: asyncapi/wefitter-webhooks.yml
+- type: Components
+  url: components/wefitter-components.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/wefitter-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/wefitter-agentic-access.yml
+- type: Authentication
+  url: authentication/wefitter-authentication.yml
 - type: Website
   url: https://wefitter.com

@@ -1,0 +1,82 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/wefitter-openapi-original.json
+notes: >-
+  Entity-relationship graph derived from the WeFitter Swagger v1.3 definitions and
+  path structure. Identifiers are `public_id` values; profiles/challenges/teams are
+  addressed by public_id in the URL path. Health-data records (workout, sleep,
+  heart rate, biometric, ECG, etc.) all belong to a profile via the
+  /profile/{profile_public_id}/... sub-resources.
+entities:
+  - name: Profile
+    id: public_id
+    description: Anonymous container for one end user's health/wearable data and gamification participation.
+    relationships:
+      - type: has_many
+        target: Connection
+        via: connections
+      - type: has_many
+        target: Team
+        via: teams
+      - type: has_many
+        target: Challenge
+        via: challenges
+      - type: has_many
+        target: Workout
+        via: profile_public_id
+      - type: has_many
+        target: HealthDataRecord
+        via: profile_public_id
+  - name: Connection
+    id: connection_slug
+    description: Link between a profile and a wearable/app provider (Fitbit, Garmin, Google Fit, Oura, Whoop, etc.).
+    relationships:
+      - type: belongs_to
+        target: Profile
+        via: profile_public_id
+  - name: Team
+    id: public_id
+    description: Group of profiles that participate together in challenges.
+    relationships:
+      - type: has_many
+        target: Profile
+        via: members
+  - name: Challenge
+    id: public_id
+    description: Gamification contest (leaderboard, goal, streak) that profiles or teams enroll in.
+    relationships:
+      - type: has_many
+        target: Profile
+        via: members
+      - type: has_many
+        target: Team
+        via: team
+      - type: has_one
+        target: Leaderboard
+        via: leaderboard
+  - name: Workout
+    description: A single workout/activity, deduplicated across connected sources.
+    relationships:
+      - type: belongs_to
+        target: Profile
+        via: profile_public_id
+      - type: has_one
+        target: HeartRateSummary
+        via: heart_rate_summary
+  - name: HealthDataRecord
+    description: >-
+      Family of per-profile health data resources — daily_summary, daily_detail,
+      sleep_summary, sleep_detail, sleep_sample, heartrate_summary, heartrate_sample,
+      stress_summary, stress_samples, biometric, biometric_measurement, bmi, height,
+      weight, ecg_recordings, activity_file, activity_segment, detail_sample,
+      track_sample, event.
+    relationships:
+      - type: belongs_to
+        target: Profile
+        via: profile_public_id
+  - name: BioAge
+    description: AI-derived biological age insight for a profile.
+    relationships:
+      - type: belongs_to
+        target: Profile
+        via: profile

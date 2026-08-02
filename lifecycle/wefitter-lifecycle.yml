@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.wefitter.com/en-us/developers/changelog/ + openapi/wefitter-openapi-original.json
+versioning:
+  scheme: uri-path
+  current: v1.3
+  pattern: /api/v{major}.{minor}/
+  docs: https://www.wefitter.com/en-us/developers/changelog/
+  notes: >-
+    Version is encoded in the base path (/api/v1.3). The changelog states most
+    changes apply to all API versions unless noted, implying additive evolution
+    within the versioned path.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support was found.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+support: https://developers.wefitter.com/support
+contact:
+  developer: tech@wefitter.com
+  general: hello@wefitter.com
+deprecated_operations: []

@@ -1,0 +1,47 @@
+# WeFitter
+
+> WeFitter is a health and fitness data platform ("one API to access wearable data, gamification and AI") operated by Thunderbyte.AI in Groningen, Netherlands. It aggregates health and activity data from 300+ wearables and fitness apps (Fitbit, Garmin, Google Fit, Apple Health, Withings, Polar, Oura, Whoop, Samsung Health and more) into a unified REST API, and layers gamification (challenges, leaderboards, teams, points) and AI insights (biological age, recommendations) on top. It is used to build corporate wellbeing, digital fitness, e-health and insurance solutions.
+
+## API
+
+- WeFitter API (REST, Swagger v1.3): https://api.wefitter.com/api/v1.3/
+- Base URL: https://api.wefitter.com/api/v1.3
+- Authentication: HTTP Basic (client id/secret) is exchanged for a JWT bearer token via POST /token/. Administrator bearer tokens manage profiles/challenges/teams; each profile also has its own profile bearer token returned at creation. Prefix tokens with `bearer `. Admin tokens are valid 24 hours.
+
+## Specs
+
+- OpenAPI (Swagger 2.0): https://api.wefitter.com/api/v1.3/redoc/?format=openapi
+- Local capture: openapi/wefitter-openapi-original.json
+
+## Docs
+
+- Developer portal: https://www.wefitter.com/en-us/developers/
+- Getting started: https://www.wefitter.com/en-us/developers/getting-started/
+- API reference (ReDoc): https://api.wefitter.com/api/v1.3/redoc/
+- Guides: https://www.wefitter.com/en-us/developers/guides/
+- Mobile SDKs: https://www.wefitter.com/en-us/developers/mobile-sdks/
+- FAQ: https://www.wefitter.com/en-us/developers/faq/
+- Changelog: https://www.wefitter.com/en-us/developers/changelog/
+- Support: https://developers.wefitter.com/support
+
+## SDKs
+
+- GitHub org: https://github.com/wefitter
+- Mobile SDK bridges for Apple Health, Samsung Health and Android Health Connect (Native, Cordova, React Native, Flutter, Expo)
+
+## Artifacts
+
+- Authentication: authentication/wefitter-authentication.yml
+- Conventions: conventions/wefitter-conventions.yml
+- Error catalog: errors/wefitter-problem-types.yml
+- Lifecycle: lifecycle/wefitter-lifecycle.yml
+- Changelog: changelog/wefitter-changelog.yml
+- Webhooks: asyncapi/wefitter-webhooks.yml
+- Data model: data-model/wefitter-data-model.yml
+- MCP (candidate): mcp/wefitter-mcp.yml
+- Agent skills: skills/_index.yml
+
+## Legal
+
+- Terms and conditions: https://www.wefitter.com/en-us/terms-and-conditions/
+- Privacy policy: https://www.wefitter.com/en-us/privacy-policy/

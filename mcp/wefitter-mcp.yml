@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/wefitter-openapi-original.json
+notes: >-
+  No official/hosted WeFitter MCP server was found (docs, npm @modelcontextprotocol,
+  MCP registries). This is a CANDIDATE tool surface derived from the WeFitter REST
+  API (Swagger v1.3) operations — a starting point for an MCP wrapper, not a
+  published server.
+server:
+  name: wefitter
+  transport: http
+  base_url: https://api.wefitter.com/api/v1.3
+tools:
+  - name: list_profiles
+    description: List profiles in the account (requires an administrator bearer token)
+    source_operation: openapi/wefitter-openapi-original.json#profile_list
+  - name: create_profile
+    description: Create a profile and receive its profile bearer token
+    source_operation: openapi/wefitter-openapi-original.json#profile_create
+  - name: read_profile
+    description: Read a single profile by public_id
+    source_operation: openapi/wefitter-openapi-original.json#profile_read
+  - name: list_profile_connections
+    description: List a profile's wearable/app connections
+    source_operation: openapi/wefitter-openapi-original.json#profile_connections
+  - name: connect_wearable
+    description: Create a connection to a wearable/app provider for a profile
+    source_operation: openapi/wefitter-openapi-original.json#connection_connect_create
+  - name: list_workouts
+    description: List a profile's workouts
+    source_operation: openapi/wefitter-openapi-original.json#profile_workout_list
+  - name: list_daily_summary
+    description: List a profile's daily activity summaries
+    source_operation: openapi/wefitter-openapi-original.json#profile_daily_summary_list
+  - name: list_sleep_summary
+    description: List a profile's sleep summaries
+    source_operation: openapi/wefitter-openapi-original.json#profile_sleep_summary_list
+  - name: list_heartrate_summary
+    description: List a profile's heart-rate summaries
+    source_operation: openapi/wefitter-openapi-original.json#profile_heartrate_summary_list
+  - name: read_bio_age
+    description: Read a profile's biological age insight
+    source_operation: openapi/wefitter-openapi-original.json#insights_bio_age_read
+  - name: list_challenges
+    description: List challenges in the account
+    source_operation: openapi/wefitter-openapi-original.json#challenge_list
+  - name: create_challenge
+    description: Create a gamification challenge
+    source_operation: openapi/wefitter-openapi-original.json#challenge_create
+  - name: read_challenge_leaderboard
+    description: Read a challenge leaderboard
+    source_operation: openapi/wefitter-openapi-original.json#challenge_leaderboard
+  - name: create_team
+    description: Create a team
+    source_operation: openapi/wefitter-openapi-original.json#team_create
+  - name: send_notification_to_profiles
+    description: Send a push notification to specific profiles
+    source_operation: openapi/wefitter-openapi-original.json#notification_send_to_profiles_create

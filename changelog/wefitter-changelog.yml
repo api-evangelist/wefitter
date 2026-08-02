@@ -1,0 +1,71 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.wefitter.com/en-us/developers/changelog/
+scheme: dated
+current_version: v1.3
+notes: >-
+  WeFitter publishes a dated, quarter-grouped changelog covering the API, the
+  Dashboard, SDKs and functionalities. All changes apply to all API versions
+  unless otherwise specified. Recent window captured below (most recent first).
+  Developer contact for changelog questions: tech@wefitter.com.
+entries:
+  - date: '2023-11-01'
+    area: api
+    highlights: [Whoop connection live]
+  - date: '2023-10-23'
+    area: api
+    highlights:
+      - Added training endpoint to detect inside vs outside workout
+      - Dashboard beta released
+  - date: '2023-07-20'
+    area: api
+    highlights: [Extended Profile and ProfileConnection serializers with created_at and updated_at]
+  - date: '2023-04-07'
+    area: api
+    highlights: [Group ingest calls together]
+  - date: '2023-03-15'
+    area: api
+    highlights:
+      - Rate limit added (initially for workouts)
+      - Admin view to manage webhooks/push endpoints
+      - Better description of challenge calculation method
+  - date: '2023-02-20'
+    area: api
+    highlights:
+      - Bio Age v0.1
+      - Fix Fitbit time range
+      - Suunto high calories
+      - Send webhooks in bulk (stress sample and daily detail)
+  - date: '2023-01-26'
+    area: api
+    highlights: [Added max score per day for leaderboards]
+  - date: '2022-12-22'
+    area: api
+    highlights:
+      - Oura API v2 support (workouts and detailed sleep measurements)
+      - Added goal progress to challenge members endpoint
+      - Improved Withings sync speed and overall stability
+  - date: '2022-11-07'
+    area: api
+    highlights:
+      - ECG list/data/PDF functionality
+      - Detailed heart-rate samples for intraday heart rate (Fitbit, Garmin, Google Fit, Polar)
+  - date: '2022-08-31'
+    area: api
+    highlights: [New data type Intraday Heartrate; Fitbit intraday heart rate]
+  - date: '2022-07-14'
+    area: api
+    highlights: [New connection Huawei; new data types Daily Detail and Sleep Detail]
+  - date: '2022-06-15'
+    area: api
+    highlights: [Added pagination in leaderboard]
+  - date: '2022-01-21'
+    area: api
+    highlights:
+      - New BiometricMeasurements model and endpoint
+      - Multi-language challenge titles/descriptions/slogans
+  - date: '2021-09-28'
+    area: api
+    highlights:
+      - New connection Oura
+      - date range filter on profile challenges

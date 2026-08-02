@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/wefitter-openapi-original.json + https://www.wefitter.com/en-us/developers/getting-started/
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      Auth is HTTP Basic exchanged for a JWT bearer token (POST /token/); no
+      OAuth2 authorization/token flow or scopes are declared.
+  - id: jwt-bearer
+    conforms: true
+    evidence: token_create returns a JWT bearer token used in the Authorization header.
+  - id: rest
+    conforms: true
+    evidence: Resource-oriented REST API over HTTPS, JSON request/response.
+  - id: openapi-swagger2
+    conforms: true
+    evidence: Published Swagger 2.0 document at /api/v1.3/redoc/?format=openapi.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: No application/problem+json responses declared; errors follow Django REST Framework defaults.
+  - id: pagination
+    conforms: true
+    evidence: List endpoints support DRF pagination (limit, offset, cursor, page_size, ordering).
+  - id: idempotency
+    conforms: false
+    evidence: No Idempotency-Key header or idempotent-retry contract documented.
+  - id: fhir
+    conforms: false
+    evidence: Proprietary unified health-data model, not FHIR resources.
+  - id: gdpr
+    conforms: true
+    evidence: >-
+      EU (Netherlands) operator; publishes privacy policy and supports custom
+      terms/privacy/data-processing agreements per client (see changelog).

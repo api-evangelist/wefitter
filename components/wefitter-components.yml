@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://www.wefitter.com/en-us/developers/getting-started/ +
+  https://www.wefitter.com/en-us/developers/changelog/
+notes: >-
+  Beyond the mobile SDKs (see packages/), WeFitter exposes a hosted connect surface
+  and configurable UI for linking wearables and configuring connections.
+components:
+  - family: Connections widget
+    kind: hosted-embeddable
+    description: >-
+      A brandable connections widget/flow that lets an end user link their wearable
+      or app accounts (Fitbit, Garmin, Google Fit, Oura, Whoop, etc.). The API's
+      connection endpoints return a provider authorization URL and accept a
+      `redirect`/`redirect_on_error` so the widget returns the user to the host app.
+      The widget renders provider brand logos.
+    related_operations: [connection_connect_create, profile_connections]
+  - family: Dashboard
+    kind: hosted-admin
+    url: https://api.wefitter.com/dashboard
+    description: >-
+      Administrator dashboard for managing accounts, apps, profiles, teams,
+      challenges, webhooks/push endpoints, and exporting reports (CSV of active
+      users, challenges, teams).

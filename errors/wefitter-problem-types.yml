@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: derived
+format: http-status
+source: openapi/wefitter-openapi-original.json
+notes: >-
+  The published Swagger v1.3 document declares only success responses (200/201/204)
+  and no explicit error schemas, so this catalog is derived from the API's auth
+  model and its Django REST Framework foundation (DRF returns JSON error bodies,
+  typically {"detail": "..."} or field-keyed validation errors). It is not an
+  RFC 9457 problem+json surface. Values below are the standard HTTP semantics the
+  API relies on, not provider-published problem types.
+problems:
+  - status: 400
+    title: Bad request / validation error
+    detail: Malformed request or field validation failure; DRF returns field-keyed error messages.
+  - status: 401
+    title: Unauthorized
+    detail: Missing, malformed, or expired bearer token. Admin bearer tokens expire after 24 hours; re-authenticate via POST /token/.
+  - status: 403
+    title: Forbidden
+    detail: >-
+      Token lacks the required privilege (e.g. using a profile bearer token for an
+      admin-only action such as listing or creating profiles).
+  - status: 404
+    title: Not found
+    detail: Referenced resource (profile, challenge, team, connection) does not exist or is not visible to the token.
+  - status: 429
+    title: Too many requests
+    detail: >-
+      Rate limiting applies (currently documented for workouts and provider-driven
+      pull intervals such as Google Fit); back off and retry.
+  - status: 500
+    title: Server error
+    detail: Unexpected server-side error.

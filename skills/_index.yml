@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/wefitter-openapi-original.json
+skills:
+  - file: wefitter-onboard-profile-and-connect-wearable.md
+    name: Onboard a profile and connect a wearable
+    api: openapi/wefitter-openapi-original.json
+    operations: [token_create, profile_create, connection_connect_create, profile_connections]
+  - file: wefitter-retrieve-health-data.md
+    name: Retrieve a profile's health data
+    api: openapi/wefitter-openapi-original.json
+    operations: [profile_daily_summary_list, profile_workout_list, profile_sleep_summary_list, profile_heartrate_summary_list, insights_bio_age_read]
+  - file: wefitter-run-a-challenge.md
+    name: Create and run a gamification challenge
+    api: openapi/wefitter-openapi-original.json
+    operations: [challenge_create, challenge_member_create, challenge_leaderboard, notification_send_to_profiles_create]

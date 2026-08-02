@@ -1,0 +1,74 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/wefitter + https://www.wefitter.com/en-us/developers/mobile-sdks/
+notes: >-
+  WeFitter ships first-party mobile SDK bridges for collecting on-device health
+  data (Apple Health, Samsung Health, Android Health Connect) and forwarding it
+  to the WeFitter API. They are published as source in the github.com/wefitter
+  org and distributed to customers on request; none are indexed on npm, PyPI or
+  pub.dev at time of probe (all returned 404). No server-side REST client SDK is
+  published — the REST API is consumed directly over HTTPS with bearer tokens.
+packages:
+  - language: objective-c
+    platform: ios
+    registry: github
+    name: react-native-wefitter-ios
+    url: https://github.com/wefitter/react-native-wefitter-ios
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: java
+    platform: android
+    registry: github
+    name: react-native-wefitter-android
+    url: https://github.com/wefitter/react-native-wefitter-android
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: kotlin
+    platform: android-health-connect
+    registry: github
+    name: react-native-wefitter-health-connect
+    url: https://github.com/wefitter/react-native-wefitter-health-connect
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: kotlin
+    platform: samsung-health
+    registry: github
+    name: react-native-wefitter-samsung
+    url: https://github.com/wefitter/react-native-wefitter-samsung
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: objective-c
+    platform: ios-cordova
+    registry: github
+    name: cordova-plugin-wefitter-ios
+    url: https://github.com/wefitter/cordova-plugin-wefitter-ios
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: kotlin
+    platform: android-health-connect-cordova
+    registry: github
+    name: cordova-plugin-wefitter-health-connect
+    url: https://github.com/wefitter/cordova-plugin-wefitter-health-connect
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: kotlin
+    platform: samsung-health-cordova
+    registry: github
+    name: cordova-plugin-wefitter-samsung
+    url: https://github.com/wefitter/cordova-plugin-wefitter-samsung
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: dart
+    platform: flutter-health-connect
+    registry: github
+    name: flutter-wefitter-health-connect
+    url: https://github.com/wefitter/flutter-wefitter-health-connect
+    install: from github.com/wefitter (on request)
+    official: true
+  - language: typescript
+    platform: expo-health-connect
+    registry: github
+    name: wf-expo-health-connect
+    url: https://github.com/wefitter/wf-expo-health-connect
+    install: from github.com/wefitter (on request)
+    official: true

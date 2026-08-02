@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/wefitter-openapi-original.json
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: Basic
+  type: http
+  scheme: basic
+  description: |-
+    Basic Authentication is used to create administrator bearer tokens.
+
+    Once a bearer token has been made, remove this auth. ('logout' in Swagger')
+  sources:
+  - openapi/wefitter-openapi-original.json
+- name: BearerProfile
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: |-
+    Bearer authentication for logged-in profiles.
+
+    When using the GUI, please don't forget to prefix your bearer tokens with the text 'bearer', followed by a space.
+  sources:
+  - openapi/wefitter-openapi-original.json

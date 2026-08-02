@@ -1,0 +1,30 @@
+{
+  "provider": "wefitter",
+  "sources": [
+    "wefitter-app-api-openapi.yml",
+    "wefitter-challenge-api-openapi.yml",
+    "wefitter-connection-api-openapi.yml",
+    "wefitter-insights-api-openapi.yml",
+    "wefitter-loyalty-api-openapi.yml",
+    "wefitter-notification-api-openapi.yml",
+    "wefitter-profile-api-openapi.yml",
+    "wefitter-team-api-openapi.yml",
+    "wefitter-token-api-openapi.yml"
+  ],
+  "outputs": [
+    "wefitter-app-api-openapi.yml",
+    "wefitter-challenge-api-openapi.yml",
+    "wefitter-connection-api-openapi.yml",
+    "wefitter-insights-api-openapi.yml",
+    "wefitter-loyalty-api-openapi.yml",
+    "wefitter-notification-api-openapi.yml",
+    "wefitter-profile-api-openapi.yml",
+    "wefitter-team-api-openapi.yml",
+    "wefitter-token-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

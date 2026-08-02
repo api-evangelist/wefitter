@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for WeFitter API
+  version: 1.0.0
+extends: openapi/wefitter-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: wefitter
+      x-apievangelist-operator: Thunderbyte.AI
+      x-apievangelist-category: health-fitness-wearables
+      x-apievangelist-auth-model: basic-to-jwt-bearer
+      x-apievangelist-notes: >-
+        Swagger 2.0, base path /api/v1.3. Auth is HTTP Basic exchanged for a JWT
+        bearer via POST /token/; admin bearer tokens vs per-profile bearer tokens.
+        List endpoints use DRF cursor/offset pagination (limit, offset, cursor,
+        page_size, ordering, search). No idempotency-key contract documented.
+  - target: $.info
+    update:
+      x-apievangelist-artifacts:
+        authentication: authentication/wefitter-authentication.yml
+        conventions: conventions/wefitter-conventions.yml
+        errors: errors/wefitter-problem-types.yml
+        lifecycle: lifecycle/wefitter-lifecycle.yml
+        changelog: changelog/wefitter-changelog.yml
+        webhooks: asyncapi/wefitter-webhooks.yml
+        data_model: data-model/wefitter-data-model.yml
+        agentic_access: agentic-access/wefitter-agentic-access.yml

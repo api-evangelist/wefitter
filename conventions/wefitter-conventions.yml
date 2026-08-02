@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://www.wefitter.com/en-us/developers/getting-started/ +
+  openapi/wefitter-openapi-original.json
+authentication:
+  style: basic-to-jwt-bearer
+  detail: >-
+    HTTP Basic (client id / client secret) is exchanged for a JWT bearer token via
+    POST /token/. Two token classes: administrator bearer tokens (manage profiles,
+    challenges, teams) and per-profile bearer tokens (returned when a profile is
+    created, used for that profile's own data). Tokens are sent in the
+    Authorization header prefixed with `bearer `. Admin tokens expire after 24h.
+  ref: authentication/wefitter-authentication.yml
+idempotency:
+  supported: false
+  detail: No Idempotency-Key header or idempotent-retry contract is documented.
+pagination:
+  style: cursor-and-offset (Django REST Framework)
+  params: [limit, offset, cursor, page_size, ordering, search]
+  detail: >-
+    List endpoints (profiles, workouts, summaries, leaderboards, etc.) are
+    paginated. Leaderboard pagination was added explicitly (see changelog). Common
+    filters include date_start/date_end, start_date/end_date, date_range, source,
+    detail and deduplicate.
+filtering:
+  common_params: [date_start, date_end, start_date, end_date, date_range, source, deduplicate, detail, recent, is_active, ordering, search]
+  detail: >-
+    Health-data list endpoints accept date-range and source filters; `deduplicate`
+    controls WeFitter's cross-wearable data-deduplication behaviour.
+versioning:
+  style: uri-path
+  detail: Version in base path, e.g. /api/v1.3. See lifecycle/wefitter-lifecycle.yml.
+error_envelope:
+  style: drf-json
+  detail: >-
+    Django REST Framework JSON errors — {"detail": "..."} for auth/permission/404,
+    field-keyed messages for validation. See errors/wefitter-problem-types.yml.
+rate_limiting:
+  detail: >-
+    Rate limiting is applied (documented for workouts; provider pull intervals such
+    as Google Fit are rate-limited upstream). No standard rate-limit response
+    headers are documented.
+events:
+  detail: >-
+    Webhooks / push endpoints deliver wearable data and events; webhooks can be sent
+    in bulk and managed in the admin dashboard. See asyncapi/wefitter-webhooks.yml.

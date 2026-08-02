@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+spec_type: Webhooks
+source: >-
+  https://www.wefitter.com/en-us/developers/getting-started/ +
+  https://www.wefitter.com/en-us/developers/changelog/
+notes: >-
+  WeFitter delivers wearable/health data to client-configured webhook ("push")
+  endpoints as new data is pulled from providers. Webhooks are managed in the
+  admin dashboard, can be configured per data type, and are sent in bulk. No
+  AsyncAPI document is published; this captures the webhook surface. For
+  event-driven providers (Fitbit, Strava, Withings, Polar) delivery is near
+  real-time; for interval-pull providers (e.g. Google Fit) it follows the sync
+  interval.
+delivery:
+  style: http-push
+  configuration: admin dashboard (per data-type webhook/push endpoints)
+  batching: bulk delivery supported (e.g. stress sample, daily detail)
+event_types:
+  - workout
+  - daily_summary
+  - daily_detail
+  - sleep_summary
+  - sleep_detail
+  - sleep_sample
+  - heartrate_summary
+  - heartrate_sample
+  - stress_summary
+  - stress_sample
+  - biometric_measurement
+  - ecg_recording
+notifications:
+  detail: >-
+    Separately, the API can push app notifications to devices for profiles via
+    POST /notification/send_to_all/ and POST /notification/send_to_profiles/.
+  operations:
+    - notification_send_to_all_create
+    - notification_send_to_profiles_create
