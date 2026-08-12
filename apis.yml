@@ -294,7 +294,7 @@ common:
 - type: PrivacyPolicy
   url: https://www.wefitter.com/en-us/privacy-policy/
 - type: OpenAPI
-  url: openapi/wefitter-openapi-original.json
+  url: openapi/_original/wefitter-openapi-original.json
 - type: Overlay
   url: overlays/wefitter-openapi-overlay.yaml
 - type: Packages
