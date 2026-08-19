@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app loyalty API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "loyalty",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "loyalty_get_recommended_products_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/loyalty/get_recommended_products",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "loyalty_get_shoppingcart_link_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/loyalty/get_shoppingcart_link"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

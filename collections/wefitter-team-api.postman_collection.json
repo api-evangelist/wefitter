@@ -1,0 +1,1499 @@
+{
+  "item": [
+    {
+      "id": "006f46bc-ddf8-43e7-935a-25a3d9f54d96",
+      "name": "team",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0d1c0a7-326e-4d32-9ce0-27ec71f8d04d",
+          "name": "List Teams",
+          "request": {
+            "name": "List Teams",
+            "description": {
+              "content": "List all available teams",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c8cb2ee6-2e47-419a-b06b-d87bff0d8af4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1794,\n  \"results\": [\n    {\n      \"name\": \"string\",\n      \"public_id\": \"3cfa28ae-8ca1-84d5-ce63-9257b962657d\",\n      \"url\": \"https://jV.irthqeYuS-ELaPNM\",\n      \"num_members\": \"string\",\n      \"avatar\": \"http://jzhof.awqo\"\n    },\n    {\n      \"name\": \"string\",\n      \"public_id\": \"c77bcfd0-55bd-a269-e3a0-2f5e9302f05c\",\n      \"url\": \"http://oHARaLPXsncPOWIqYzsaDDyQSO.ewbnf6IS-n-24hUBNB6sp+P8QbYyJTUnyGzjJRftcK6vIBz5hGKQqWr.kP-GdgewB0EIQbnDB7JpunD\",\n      \"num_members\": \"string\",\n      \"avatar\": \"http://qXIjNuoxfErHpGLZVYrLtYOsFXbGLYu.kotv0xWlHaYfvBrBrW0qwrBqwhVCq,c+LwG8I4v\"\n    }\n  ],\n  \"next\": \"http://qVAoBBqTUWUiWCbmXgbgW.ymC+qGtqZ2Cb\",\n  \"previous\": \"https://FUiNCXmkNZJTNsy.hlozGNjE6wqjPVDkhQEJIS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15eb26b7-bc9d-4eb1-947a-485447239737",
+          "name": "Create Team",
+          "request": {
+            "name": "Create Team",
+            "description": {
+              "content": "Creates a new team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"avatar\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f1e05b6-44be-4a14-b725-4609f435937b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_id\": \"40b9c951-130e-fd90-1f12-1636e282d026\",\n  \"url\": \"https://bhNpjrWsx.pdirCOSkkxCEC\",\n  \"num_members\": \"string\",\n  \"members\": [\n    {\n      \"url\": \"https://MXXrQgQJBtgCeVEoVdkSt.rxzLksoEZNoz.4npdAqaiNaWOh+1smi1RTm5LTTmdy9IHI2B\",\n      \"public_id\": \"91e99003-c36b-995e-5703-6c6ac9ddc1c3\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    },\n    {\n      \"url\": \"http://OYXYzgsfIBduZlYa.gztpcr9wtdkgFO+IDAFg61WWkAQEcAMy23dCdWP9CJ04\",\n      \"public_id\": \"ef13960d-f8a3-7bcd-c70c-07c650cb8454\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    }\n  ],\n  \"avatar\": \"<uri>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19cf30ab-106c-4301-bb22-7862472ecf83",
+          "name": "Team",
+          "request": {
+            "name": "Team",
+            "description": {
+              "content": "Get a single team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "06f53b87-bce6-44f1-87b3-75c7744d376e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_id\": \"1db9e2fc-6b17-a535-7a7f-6144b20cb5ab\",\n  \"url\": \"http://goFMrGMhd.nnawdhjlbAA.lofHdcn76iT1GNGnqA3z7\",\n  \"num_members\": \"string\",\n  \"members\": [\n    {\n      \"url\": \"https://aORrEXoVAiCtdEwHwqgjjlaXQzDa.jzoGhZSYK0L58Ven1mgV-H\",\n      \"public_id\": \"e260fd91-1201-fb9d-8136-e7ec84e15e86\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    },\n    {\n      \"url\": \"http://XMOYJnhWcflnkH.qezxJYne1eGOSoV-t1F+Y6qYYxpKYKUrTt9cVdmmulL3XpulYBAq3Fy2uhhw2wvme\",\n      \"public_id\": \"bd2b5e3c-aa01-1f30-d7d2-d421bd3a704e\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    }\n  ],\n  \"avatar\": \"<uri>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43cc8da0-dd5e-4935-90b5-126a9c55e558",
+          "name": "Edit Team",
+          "request": {
+            "name": "Edit Team",
+            "description": {
+              "content": "Creates a new team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"avatar\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0db2470d-d668-4d34-b912-7b7fb375f306",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_id\": \"1db9e2fc-6b17-a535-7a7f-6144b20cb5ab\",\n  \"url\": \"http://goFMrGMhd.nnawdhjlbAA.lofHdcn76iT1GNGnqA3z7\",\n  \"num_members\": \"string\",\n  \"members\": [\n    {\n      \"url\": \"https://aORrEXoVAiCtdEwHwqgjjlaXQzDa.jzoGhZSYK0L58Ven1mgV-H\",\n      \"public_id\": \"e260fd91-1201-fb9d-8136-e7ec84e15e86\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    },\n    {\n      \"url\": \"http://XMOYJnhWcflnkH.qezxJYne1eGOSoV-t1F+Y6qYYxpKYKUrTt9cVdmmulL3XpulYBAq3Fy2uhhw2wvme\",\n      \"public_id\": \"bd2b5e3c-aa01-1f30-d7d2-d421bd3a704e\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    }\n  ],\n  \"avatar\": \"<uri>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c86891c-8251-49a7-8040-d67622b570a8",
+          "name": "Partial Edit a Team",
+          "request": {
+            "name": "Partial Edit a Team",
+            "description": {
+              "content": "Creates a new team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"avatar\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52c1fd03-6fcb-4cdb-8b89-f8300a0f6c4f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_id\": \"1db9e2fc-6b17-a535-7a7f-6144b20cb5ab\",\n  \"url\": \"http://goFMrGMhd.nnawdhjlbAA.lofHdcn76iT1GNGnqA3z7\",\n  \"num_members\": \"string\",\n  \"members\": [\n    {\n      \"url\": \"https://aORrEXoVAiCtdEwHwqgjjlaXQzDa.jzoGhZSYK0L58Ven1mgV-H\",\n      \"public_id\": \"e260fd91-1201-fb9d-8136-e7ec84e15e86\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    },\n    {\n      \"url\": \"http://XMOYJnhWcflnkH.qezxJYne1eGOSoV-t1F+Y6qYYxpKYKUrTt9cVdmmulL3XpulYBAq3Fy2uhhw2wvme\",\n      \"public_id\": \"bd2b5e3c-aa01-1f30-d7d2-d421bd3a704e\",\n      \"name\": \"string\",\n      \"reference\": \"string\"\n    }\n  ],\n  \"avatar\": \"<uri>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "966f3f07-c9df-4330-be90-8fb2377fa8f3",
+          "name": "Deletes a Team",
+          "request": {
+            "name": "Deletes a Team",
+            "description": {
+              "content": "Deletes an existing team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "972ea3a7-6dce-4db9-8721-aefa38171db0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77cda863-29a4-4318-94a2-1c309a7dc170",
+          "name": "Add member",
+          "request": {
+            "name": "Add member",
+            "description": {
+              "content": "Add member to a team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                "member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e74694e6-7962-448a-adbb-cd7cabefd8b1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    "member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profile\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c262db1-a737-4500-a2af-720c6d5d3192",
+          "name": "Add member",
+          "request": {
+            "name": "Add member",
+            "description": {
+              "content": "Add member to a team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                "member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe357dcb-22ea-444b-aab4-891c8dbee64c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    "member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profile\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da6ab0c5-44f1-4370-bdc9-873388c6f8fa",
+          "name": "Remove member",
+          "request": {
+            "name": "Remove member",
+            "description": {
+              "content": "Remove a member from the team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                "member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "profile",
+                  "value": "<uuid>",
+                  "description": "(Required) A profile public_id is expected"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "41302e16-8127-4eea-b8a4-78920fa6aa4b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    "member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "profile",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37683314-3fea-40eb-aebf-c6a84d9f26d3",
+          "name": "Add members",
+          "request": {
+            "name": "Add members",
+            "description": {
+              "content": "Add members to a team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                "members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90fc7132-23e9-4401-a102-e39cf344feb3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    "members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0a90c9a-d9cc-4c30-98ca-4c942f9e63b6",
+          "name": "Add members",
+          "request": {
+            "name": "Add members",
+            "description": {
+              "content": "Add members to a team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                "members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d670268-7da1-4e64-99be-5b72460ec748",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    "members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab055b76-3d4b-44ac-8161-aacdf360675e",
+          "name": "Remove members",
+          "request": {
+            "name": "Remove members",
+            "description": {
+              "content": "Remove members from the team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "team",
+                ":public_id",
+                "remove_members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07a0bfea-9f89-486c-b418-52323116d808",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "team",
+                    ":public_id",
+                    "remove_members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wefitter.com/api/v1.3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "21ea7a33-bb95-45d9-bb03-ab3ad1ca12d6",
+    "name": "WeFitter app team API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the WeFitter API\n\nContact Support:\n Email: hello@wefitter.com",
+      "type": "text/plain"
+    }
+  }
+}

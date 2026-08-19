@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app notification API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "notification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Notification to all profiles in app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/notification/send_to_all/"
+          },
+          "docs": "Send a notification to all registered devices in the app."
+        },
+        {
+          "info": {
+            "name": "Notification to specific profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/notification/send_to_profiles/"
+          },
+          "docs": "Send a notification to all registered devices for the specified profiles."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

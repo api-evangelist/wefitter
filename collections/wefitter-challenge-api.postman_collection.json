@@ -1,0 +1,2815 @@
+{
+  "item": [
+    {
+      "id": "a17d01e5-ec46-43d6-9e37-987e6469cd81",
+      "name": "challenge",
+      "description": {
+        "content": "\nWeFitter API’s challenge engine will bring endless engagement to your platform.\nFor more information about the possibilities in challenges please go to https://www.wefitter.com/en-us/features/gamification/\n\nChallenges have multilanguage support on the fields: `Title`, `Slogan`, and `Description`.\nBy default, challenges get the default-language that is configured in the app. Whenever a challenge is requested through the API this challenge will be presented in the default language.\nIf another language is preferred, this can be requested by adding the header parameter `Accept-Language` stating the language short code (ex. `en` for english). If this language short code is not present in the title of the challenge, the default language will be returned.\n\nThese translation fields contain JSON strings, for example:\n```{\"en\":\"this is the English title\",\"nl\":\"this is the Dutch title\"}```\nSo to create a multilanguage challenge, please provide the title, slogan, and description field as json strings, be aware that because of serialization this should be formed with backward slashes:\n\n\n<table><tbody>\n    <tr><td>\n{\n\n\"title\": \"{\\\"en\\\":\\\"this is the English title\\\", \\\"nl\\\":\\\"this is the dutch title\\\"}\",\n\n\"slogan\": \"{\\\"en\\\":\\\"this is the English title\\\", \\\"nl\\\":\\\"this is the dutch slogan\\\"}\",\n\n\"description\": \"{\\\"en\\\":\\\"this is the English title\\\", \\\"nl\\\":\\\"this is the dutch description\\\"}\",\n\n}\n</td></tr>\n</tbody></table>\n\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ad54132-5399-406a-8276-ba3fb196254b",
+          "name": "List Challenges",
+          "request": {
+            "name": "List Challenges",
+            "description": {
+              "content": "Lists all available challenges",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "recent",
+                  "value": "<integer>",
+                  "description": "Show challenges that have not ended in the last N weeks"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "30e9f619-8649-453b-a446-436cee246014",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "recent",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3535,\n  \"results\": [\n    {\n      \"title\": \"string\",\n      \"start\": \"1971-04-02T04:16:53.842Z\",\n      \"type\": \"GROUP\",\n      \"goal\": \"TOTAL\",\n      \"goal_type\": \"POINTS\",\n      \"visibility\": \"PRIVATE\",\n      \"repetition\": \"STICKTOIT\",\n      \"url\": \"http://QLcaXPUPlqKHcIJvzCC.cerBtD-HJm6iECnnwKNjczazgfTL8wixZL7r,d3jUmVLE6AViLms5AE\",\n      \"public_id\": \"4d23f83e-f918-b8d2-b738-1078058d395d\",\n      \"slogan\": \"string\",\n      \"description\": \"string\",\n      \"end\": \"1986-09-02T11:22:38.168Z\",\n      \"goal_value\": -1462125437,\n      \"num_members\": \"string\",\n      \"avatar\": \"https://Gswv.jzkHtB90YQjbF1HM\",\n      \"data_source\": \"string\",\n      \"activity_types\": [\n        {\n          \"activity_type\": \"RUNNING\"\n        },\n        {\n          \"activity_type\": \"WALKING\"\n        }\n      ],\n      \"current_period_start\": \"1957-06-05T06:06:02.487Z\",\n      \"current_period_end\": \"1983-04-13T04:24:38.975Z\",\n      \"goal_cap\": false\n    },\n    {\n      \"title\": \"string\",\n      \"start\": \"1960-10-28T00:29:12.195Z\",\n      \"type\": \"INDIVIDUAL\",\n      \"goal\": \"WEEKLY\",\n      \"goal_type\": \"DURATION\",\n      \"visibility\": \"PUBLIC\",\n      \"repetition\": \"STICKTOIT\",\n      \"url\": \"http://WGKfHnxN.yrzQ1rPYXPos,WOV+Zf0DNx.uU+RP1TzO,YX9DiJyshe.rYWGhbgm-cz-8pE-ZJOLajv8LQ74fyTb0oTjac5umj\",\n      \"public_id\": \"a6b0bb46-bebb-ba2a-967c-c82cf342d479\",\n      \"slogan\": \"string\",\n      \"description\": \"string\",\n      \"end\": \"1956-01-04T05:35:13.089Z\",\n      \"goal_value\": -1398032187,\n      \"num_members\": \"string\",\n      \"avatar\": \"https://QzQcrwctaiI.knmsvsEbco7cjnrr18lqu-qTrJZq\",\n      \"data_source\": \"string\",\n      \"activity_types\": [\n        {\n          \"activity_type\": \"WALKING\"\n        },\n        {\n          \"activity_type\": \"STRENGTH_TRAINING\"\n        }\n      ],\n      \"current_period_start\": \"1978-08-01T07:33:20.719Z\",\n      \"current_period_end\": \"2006-06-25T16:18:39.888Z\",\n      \"goal_cap\": false\n    }\n  ],\n  \"next\": \"https://RQOIduDHdeRvBuQu.ghjnRY8pLc1ZwSi,E.yt+Ufr14V0zfaLp1bwuIcfkt9uVbOIqXvtokyw6uqZdPvsyFf\",\n  \"previous\": \"http://VuwCCToOFSWcgnf.luqdkWWk-xD.V.Z9YgMc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85c88f12-8380-4abb-899a-b77dc13a59bc",
+          "name": "Create challenge",
+          "request": {
+            "name": "Create challenge",
+            "description": {
+              "content": "Creates a new challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"type\": \"<string>\",\n  \"goal\": \"<string>\",\n  \"goal_type\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"calculation_method\": \"<string>\",\n  \"enrollment_method\": \"<string>\",\n  \"repetition\": \"<string>\",\n  \"slogan\": \"<string>\",\n  \"description\": \"<string>\",\n  \"end\": \"<dateTime>\",\n  \"goal_value\": \"<integer>\",\n  \"default_enrollment_time\": \"<string>\",\n  \"avatar\": \"<uri>\",\n  \"activity_types\": [\n    {\n      \"activity_type\": \"<string>\"\n    },\n    {\n      \"activity_type\": \"<string>\"\n    }\n  ],\n  \"goal_cap\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32a3f7c8-55ac-478e-928c-08bf25c0d50e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21c7f455-3a2a-4788-9c64-c647306101b5",
+          "name": "Team leaderboard",
+          "request": {
+            "name": "Team leaderboard",
+            "description": {
+              "content": "List the standings of different teams in challenges (don't have to be team challenges).\nThis endpoint returns a list of objects.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":challenge_public_id",
+                "team",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_range",
+                  "value": "<integer>",
+                  "description": "Index of the time period use"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "challenge_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d685caf6-5d0c-4cb3-9840-c85251cb78e4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":challenge_public_id",
+                    "team",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_range",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "challenge_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3230,\n  \"results\": [\n    {\n      \"name\": \"string\",\n      \"avatar\": \"https://ioUKehLXykDUcArJSxaJdRgb.urayxeIWpvzs9\",\n      \"public_id\": \"3874b07e-511e-b44f-b356-4cef3502580e\",\n      \"url\": \"https://bt.jond0W3jFQcyOeRFpQYjWQZwWcewsng1ldbAdpJ82SC.dHcYiz3DGoLGenOG\",\n      \"num_members\": \"string\",\n      \"score\": 7867.684848566003,\n      \"position\": 212\n    },\n    {\n      \"name\": \"string\",\n      \"avatar\": \"http://bmKGqhKaJnrKgvxCwjUKtnr.sgpLbzHB9F9ib1oF.jUekw.fFqUU9tcXmiyuxbkso1be,WJ041OvtfgMyrI9XgYAp.IhP1eW\",\n      \"public_id\": \"f2e37b6f-faaf-8e2b-e0b0-5b86ee413138\",\n      \"url\": \"http://QjkctswTXfHsIo.qnGxYs8roRuJFyvlYRzJpWYATC\",\n      \"num_members\": \"string\",\n      \"score\": 5185.785276772852,\n      \"position\": 1846\n    }\n  ],\n  \"next\": \"http://qZFAZjNbNVnjJZZQipwKXtLZ.ijeUfSX+WPKCZiGa84ZGrxQTFCJBukGKorg9XaUeguS9cgfY5JvuUZfPzg6s8\",\n  \"previous\": \"http://hqoogvKTeTJzaIOOCTSXJZEe.pbtfCJ4Ow8KoVgDn7A\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b01caf80-0643-4be6-b75f-1bab89400983",
+          "name": "Team contribution",
+          "request": {
+            "name": "Team contribution",
+            "description": {
+              "content": "List team members' contribution to the challenge.\nThis endpoint returns a list of objects.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":challenge_public_id",
+                "team",
+                ":team_public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_range",
+                  "value": "<integer>",
+                  "description": "Index of the time period use"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "challenge_public_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0dc8ff42-cfd0-4d5a-9699-b397d3f8f281",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":challenge_public_id",
+                    "team",
+                    ":team_public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_range",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "challenge_public_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"avatar\": \"http://AbkwDwzRiAYtYIozisZWEXmzHNbDLpJZ.tbScxwDKKMFcwoK+STPBK5fku01HNM3RNPBV+KUn.oC-KmM\",\n  \"url\": \"https://sAhRdtXMrvhBU.ylcQM1bZ\",\n  \"public_id\": \"fe84720e-b372-055e-a560-2a7df4de6b8a\",\n  \"name\": \"string\",\n  \"gender\": \"F\",\n  \"teams\": [\n    {\n      \"name\": \"string\",\n      \"public_id\": \"69a761dd-0120-0f8a-222a-6ee41120dacc\",\n      \"url\": \"https://yRMCVgFCtXAobAmiA.paev\",\n      \"avatar\": \"https://nDcrA.dglH.B5-i\"\n    },\n    {\n      \"name\": \"string\",\n      \"public_id\": \"a58cc29f-be06-9d91-4545-8c9d4e46b8b2\",\n      \"url\": \"https://WnbdUWichhGwGr.xalbpHac3QPcIhmlh6tGs+Wg7m1SM8fdb,f+ea3WE\",\n      \"avatar\": \"https://wLAlDGtImlQOEDELHIC.wfzabQqm3Lx7eF4f5iPkIi31-mz2jx3nwpscPpb4A6AFszm3wFBI6m2JVmCcLhi2luD8Kdh6R\"\n    }\n  ],\n  \"reference\": \"string\",\n  \"score\": 214.36565452413458,\n  \"position\": 3455\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e63545b-0a33-4259-9012-e7ef5e00e1ee",
+          "name": "Get Challenge",
+          "request": {
+            "name": "Get Challenge",
+            "description": {
+              "content": "Gets a single challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "185748e1-e67e-426f-87fa-f1c7aedf2e76",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "895ec451-6200-4f38-9148-8c0f1745f09e",
+          "name": "Edit challenge",
+          "request": {
+            "name": "Edit challenge",
+            "description": {
+              "content": "Edits a challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"type\": \"<string>\",\n  \"goal\": \"<string>\",\n  \"goal_type\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"calculation_method\": \"<string>\",\n  \"enrollment_method\": \"<string>\",\n  \"repetition\": \"<string>\",\n  \"slogan\": \"<string>\",\n  \"description\": \"<string>\",\n  \"end\": \"<dateTime>\",\n  \"goal_value\": \"<integer>\",\n  \"default_enrollment_time\": \"<string>\",\n  \"avatar\": \"<uri>\",\n  \"activity_types\": [\n    {\n      \"activity_type\": \"<string>\"\n    },\n    {\n      \"activity_type\": \"<string>\"\n    }\n  ],\n  \"goal_cap\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c241b4da-4605-4fd3-bcdf-fe442a990bdf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd2df8c1-ed8b-4105-aa1e-c14f0f430055",
+          "name": "Partial edit challenge",
+          "request": {
+            "name": "Partial edit challenge",
+            "description": {
+              "content": "Edits a challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"type\": \"<string>\",\n  \"goal\": \"<string>\",\n  \"goal_type\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"calculation_method\": \"<string>\",\n  \"enrollment_method\": \"<string>\",\n  \"repetition\": \"<string>\",\n  \"slogan\": \"<string>\",\n  \"description\": \"<string>\",\n  \"end\": \"<dateTime>\",\n  \"goal_value\": \"<integer>\",\n  \"default_enrollment_time\": \"<string>\",\n  \"avatar\": \"<uri>\",\n  \"activity_types\": [\n    {\n      \"activity_type\": \"<string>\"\n    },\n    {\n      \"activity_type\": \"<string>\"\n    }\n  ],\n  \"goal_cap\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1bbdbb2a-1924-4212-86c0-0e528100142b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d74078a-3a22-4be7-9883-1b96a5ed0440",
+          "name": "Delete challenge",
+          "request": {
+            "name": "Delete challenge",
+            "description": {
+              "content": "deletes a challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3c31b083-5287-4152-9e0f-d3c47e9672b0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "010518a5-6476-4a11-b357-66bb0ea2b2e9",
+          "name": "Deactivate member",
+          "request": {
+            "name": "Deactivate member",
+            "description": {
+              "content": "Deactivate a member from the challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "deactivate_member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "profile",
+                  "value": "<uuid>",
+                  "description": "(Required) A profile public_id is expected"
+                },
+                {
+                  "disabled": false,
+                  "key": "team",
+                  "value": "<uuid>",
+                  "description": "A team public_id is expected"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Whether profile actively participates in challenge.\n\nWhile inactive, scores/leaderboard will not be updated but still be visible."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6cd09915-6cf8-4c1e-9887-d5a48e63a1a4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "deactivate_member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "profile",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "team",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "167141b1-c5a5-4207-96c3-50c273e2e530",
+          "name": "challenge deactivate member update",
+          "request": {
+            "name": "challenge deactivate member update",
+            "description": {
+              "content": "This docstring is used by Django Rest Framework",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "deactivate_member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc14967d-2283-4272-b352-525907c4880e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "deactivate_member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06fad3f2-1a98-49ea-9fa5-9cac6a4c4210",
+          "name": "Deactivate members",
+          "request": {
+            "name": "Deactivate members",
+            "description": {
+              "content": "Deactivate multiple members from the challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "deactivate_members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "profile",
+                  "value": "<uuid>",
+                  "description": "(Required) A profile public_id is expected"
+                },
+                {
+                  "disabled": false,
+                  "key": "team",
+                  "value": "<uuid>",
+                  "description": "A team public_id is expected"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Whether profile actively participates in challenge.\n\nWhile inactive, scores/leaderboard will not be updated but still be visible."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0718a856-9f0f-41ee-8be6-b83403682c9a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "deactivate_members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "profile",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "team",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b6e4893-fc09-41e6-8e17-1df4fb5de910",
+          "name": "challenge deactivate members update",
+          "request": {
+            "name": "challenge deactivate members update",
+            "description": {
+              "content": "This docstring is used by Django Rest Framework",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "deactivate_members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08c52a0a-b7f2-4e76-8e76-43dc21ba6624",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "deactivate_members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1773deeb-a819-4c62-8728-ac708e8f7808",
+          "name": "Leaderboard",
+          "request": {
+            "name": "Leaderboard",
+            "description": {
+              "content": "Displays the leaderboard for a challenge.\nThis endpoint returns a list of objects.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "leaderboard",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_range",
+                  "value": "<integer>",
+                  "description": "Index of the time period use"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bd33dad1-814b-4888-bbaf-2cc19b93ec7e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "leaderboard",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_range",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"avatar\": \"http://PgBSjpgEvuemGCUxQClTkzxdQIispaboJ.wxjnVfu7OryrvCPGqOoA\",\n  \"name\": \"string\",\n  \"public_id\": \"f7b6e672-f53a-4033-3853-f08458890e99\",\n  \"url\": \"http://sqYvwqypVROuFEHYlIeVnwMYzl.sll7t7IY0U-MiRJp7K1OSYWBTtbPB\",\n  \"score\": 2847.9590057702067,\n  \"position\": 1904\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35ce483c-d3bc-447e-adf0-45f8cd2b5d6f",
+          "name": "Leaderboard history",
+          "request": {
+            "name": "Leaderboard history",
+            "description": {
+              "content": "Retrieve the scores of the authenticated profile for all periods since the profile joined the challenge.\nThis endpoint returns a list of objects.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "leaderboard_history",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6adbc027-c6f7-4b89-b921-58016d2d35a1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "leaderboard_history",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"score\": 6510.368462013303,\n  \"start\": \"2007-12-05T16:37:50.271Z\",\n  \"end\": \"1951-04-30T18:08:15.568Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa084da2-edfb-4390-90e5-9f9b17f8f1e3",
+          "name": "Add member",
+          "request": {
+            "name": "Add member",
+            "description": {
+              "content": "Add member to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7973fa6-2811-4da1-b860-542484d6b4de",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a581119-0982-4d1e-8fcf-62b8d5dab1de",
+          "name": "Add member",
+          "request": {
+            "name": "Add member",
+            "description": {
+              "content": "Add member to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3e0068e-f515-4cf7-8793-f41eecd5d4fe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profile\": \"<uuid>\",\n  \"team\": \"<uuid>\",\n  \"is_active\": \"<boolean>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c5de319-8908-4525-82fa-d398be4b3e07",
+          "name": "Remove member",
+          "request": {
+            "name": "Remove member",
+            "description": {
+              "content": "Remove a member from the challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "member",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "profile",
+                  "value": "<uuid>",
+                  "description": "(Required) A profile public_id is expected"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b3570ac-f901-49da-9927-b925819e46cb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "member",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "profile",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e686dca6-1d1e-4422-a889-4f21728cf277",
+          "name": "Get members",
+          "request": {
+            "name": "Get members",
+            "description": {
+              "content": "Get a paginated list of members enrolled to a Challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a8c05e9-d179-45a7-b474-a2963cfbcc26",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "326097cd-bcd9-4e77-9834-f317bd72ef74",
+          "name": "Add members",
+          "request": {
+            "name": "Add members",
+            "description": {
+              "content": "Add members to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n\nNote: for the GET/POST endpoint an admin bearer token is required, while the GET also accepts profile bearer tokens",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74f27fea-1297-4ba2-bd5d-6d9f37f0594d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79974d65-a6d1-4965-a4c2-e4be3425ed5a",
+          "name": "Add members",
+          "request": {
+            "name": "Add members",
+            "description": {
+              "content": "Add members to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n\nNote: for the GET/POST endpoint an admin bearer token is required, while the GET also accepts profile bearer tokens",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d563f9da-efa4-4370-b0cb-179ba0b540ad",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1f6a13f-628f-468f-b8f5-fb4e2a37df79",
+          "name": "Periods",
+          "request": {
+            "name": "Periods",
+            "description": {
+              "content": "Get all periods for the challenge.\nThis endpoint returns a list of objects.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "periods",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32669725-be37-4771-8c82-be40b3127821",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "periods",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"start\": \"1995-08-24T18:02:15.832Z\",\n  \"end\": \"1963-08-15T08:25:42.026Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8eb6639b-42f9-415a-90d8-253425811d89",
+          "name": "Remove members",
+          "request": {
+            "name": "Remove members",
+            "description": {
+              "content": "Remove members from the challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "challenge",
+                ":public_id",
+                "remove_members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d7242cc-7a75-4d30-a300-e19755e787f9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "challenge",
+                    ":public_id",
+                    "remove_members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"profiles\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"is_active\": \"<boolean>\",\n  \"team\": \"<uuid>\",\n  \"joined\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wefitter.com/api/v1.3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "70da6443-279c-439b-bd06-db99d3c2a837",
+    "name": "WeFitter app challenge API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the WeFitter API\n\nContact Support:\n Email: hello@wefitter.com",
+      "type": "text/plain"
+    }
+  }
+}

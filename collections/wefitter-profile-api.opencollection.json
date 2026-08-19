@@ -1,0 +1,1225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app profile API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ]
+          },
+          "docs": "Lists all available profiles"
+        },
+        {
+          "info": {
+            "name": "Create Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/profile/"
+          },
+          "docs": "\nCreates a new profile.\nThe bearer field contains a profile bearer token. When this is used in the Authorization header actions are performed\nas that profile, which will also enable access to private data.\nUsing a profile bearer token disables administrative features such as creating profiles, making this token safe\nfor 'public' use.\nA profile bearer token has no expiration, so it remains valid as long as the profile is active.\n"
+        },
+        {
+          "info": {
+            "name": "profile_activity_file_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/activity_file/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "profile_activity_file_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/activity_file/:activity_id",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Activity segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/activity_segment/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Lists segments of activities and small non-workout-like movements."
+        },
+        {
+          "info": {
+            "name": "Bio Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/biometric/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Lists changes in weight, height and bmi for the profile."
+        },
+        {
+          "info": {
+            "name": "Biometric Measurement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/biometric_measurement/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              },
+              {
+                "name": "measurement_type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List changes in biometric measurements for the profile."
+        },
+        {
+          "info": {
+            "name": "BMI",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/bmi/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Presents the Body-Mass-Index over time."
+        },
+        {
+          "info": {
+            "name": "Daily details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/daily_detail/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Intraday data measured at a single point in time."
+        },
+        {
+          "info": {
+            "name": "Daily Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/daily_summary/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              },
+              {
+                "name": "deduplicate",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, duplicates will be aggregated."
+              }
+            ]
+          },
+          "docs": "Provides summarized data per day."
+        },
+        {
+          "info": {
+            "name": "Detail Sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/detail_sample/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Presents detail samples."
+        },
+        {
+          "info": {
+            "name": "Electrocardiograms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/ecg_recordings/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "\nThis endpoint returns a list of ECG recordings.\n"
+        },
+        {
+          "info": {
+            "name": "Electrocardiogram data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/ecg_recordings/data/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "\nThis endpoint returns an ECG recording with data as an array of tuples `[(time, value)]`.\nSet the argument `date_end` to request a specific recording or leave it empty to receive the latest recording.\n"
+        },
+        {
+          "info": {
+            "name": "Electrocardiogram PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/ecg_recordings/pdf/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datetime",
+                "value": "",
+                "type": "query",
+                "description": "The timestamp when the ECG has been recorded in the format `yyyymmddhhmmss`. e.g. `20210913132513`"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a PDF with generated ECG charts from a specific source and time. Contact api-support@wefitter.com to gain access."
+        },
+        {
+          "info": {
+            "name": "Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/event/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Lists events, generic actions for which points have been awarded."
+        },
+        {
+          "info": {
+            "name": "Create Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/profile/:profile_public_id/event/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new event for the profile."
+        },
+        {
+          "info": {
+            "name": "Heart Rate Sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/heartrate_sample/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              },
+              {
+                "name": "heart_rate_detail",
+                "value": "",
+                "type": "query",
+                "description": "If set to true it will add heart_rate_samples field"
+              }
+            ]
+          },
+          "docs": "Heart Rate measured at a single point in time."
+        },
+        {
+          "info": {
+            "name": "Heart Rate Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/heartrate_summary/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Presents heart rate information."
+        },
+        {
+          "info": {
+            "name": "Height",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/height/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Lists changes in height for the profile."
+        },
+        {
+          "info": {
+            "name": "Sleep detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/sleep_detail/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Provides sleep detail data."
+        },
+        {
+          "info": {
+            "name": "Sleep Sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/sleep_sample/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Presents sample data for sleep: hrv, movement, heart_rate and sleep_stages,"
+        },
+        {
+          "info": {
+            "name": "Sleep Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/sleep_summary/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "If set to true and only 1 result is returned, it will add a detail field"
+              }
+            ]
+          },
+          "docs": "Provides summarized sleep data."
+        },
+        {
+          "info": {
+            "name": "Stress Sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/stress_samples/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Presents stress samples."
+        },
+        {
+          "info": {
+            "name": "Stress Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/stress_summary/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Presents stress summaries."
+        },
+        {
+          "info": {
+            "name": "Track Sample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/track_sample/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Presents GPX track samples."
+        },
+        {
+          "info": {
+            "name": "Weight",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/weight/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              }
+            ]
+          },
+          "docs": "Lists changes in weight for the profile."
+        },
+        {
+          "info": {
+            "name": "Workout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:profile_public_id/workout/",
+            "params": [
+              {
+                "name": "profile_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound of date or timestamp."
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound of date or timestamp."
+              },
+              {
+                "name": "deduplicate",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, duplicates will be aggregated."
+              },
+              {
+                "name": "heart_rate_detail",
+                "value": "",
+                "type": "query",
+                "description": "If set to true and page_size is 1, it will add heart_rate_samples field"
+              }
+            ]
+          },
+          "docs": "Lists workouts associated with the profile. Used to be known as Activity."
+        },
+        {
+          "info": {
+            "name": "Get Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a single profile"
+        },
+        {
+          "info": {
+            "name": "Update profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/profile/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Updates the specified profile, excluding ID, team and public id."
+        },
+        {
+          "info": {
+            "name": "Partial Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/profile/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Performs a partial update"
+        },
+        {
+          "info": {
+            "name": "Delete Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/profile/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the specified profile, if created by the app."
+        },
+        {
+          "info": {
+            "name": "Challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:public_id/challenge/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recent",
+                "value": "",
+                "type": "query",
+                "description": "Show challenges that have not ended in the last N weeks"
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query",
+                "description": "Only return challenges that are active after this time\n\nNote: this only affects challenges that are not joined.\n\nDefaults to now"
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query",
+                "description": "Only return challenges that are active before this time\n\nNote: this only affects challenges that are not joined.\n\nDefaults to now"
+              }
+            ]
+          },
+          "docs": "Provides a list of challenges where the profile can participate and is already participating in.\n\nThis endpoint returns a list of objects.\n"
+        },
+        {
+          "info": {
+            "name": "profile_challenges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:public_id/challenges/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This docstring is used by Django Rest Framework"
+        },
+        {
+          "info": {
+            "name": "Connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/profile/:public_id/connections/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "After connecting redirect back to this url.\n\nNote: has to be a valid http url. For deeplinks (to apps) first redirect to your own backend and then deeplink from there.\n\nNote: the user is only redirected on a successfull connection, otherwise an error screen is shown. (see redirect_on_error to change this)\n\nNote: if this parameter is omitted, then user will see a generic success screen."
+              },
+              {
+                "name": "redirect_on_error",
+                "value": "",
+                "type": "query",
+                "description": "If enabled, then user will also be redirected to the redirect url if an error occurs\n\nNote: a query parameter 'error' is added to the redirect url. Possible values are access_denied, unknown. New values may be added at anytime\n\nNote: for backwards compatibility the default is false, but this will be changed in the next breaking release"
+              }
+            ]
+          },
+          "docs": "Lists the connections available for a profile and their \"state\".\nThis endpoint returns a list of objects.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

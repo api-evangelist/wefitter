@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app token API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/token/"
+          },
+          "docs": "\nIn order to create a token, perform a POST request to this endpoint, example:<br/>\n<table><tbody>\n    <tr><td>Application ID</td><td>123</td></tr>\n    <tr><td>Application Secret</td><td>ABC</td></tr>\n    <tr><td>Authorization header format</td><td>Authorization: base64(app_id:app_secret)</td></tr>\n    <tr><td>Expected result</td><td>Authorization: MTIzOkFCQw==</td></tr>\n</tbody></table>\nFor testing purposes, a CURL can be used:\n<pre>\ncurl -X POST -H \"Authorization: Basic MTIzOkFCQw==\" https://a"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

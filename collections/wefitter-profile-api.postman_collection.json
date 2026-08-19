@@ -1,0 +1,4805 @@
+{
+  "item": [
+    {
+      "id": "d8f7e3fd-f021-456e-9aaa-fa908df6316a",
+      "name": "profile",
+      "description": {
+        "content": "\nProfiles are containers for wearables data.\nThe profiles can be seen as an extension of users in a different system.\nProfiles are anonymous objects which can participate in teams and challenges.\n\nKeep in mind, listing profiles and creating profiles need an administrative bearer token, all profile specific actions\nneed a seperate bearer token that is returned after creating a profile. This bearer token is used in place of the\nadministrative bearer token. (see profile create action for more information)\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "17328441-1f62-40ec-afcb-4026288d7ff6",
+          "name": "List Profiles",
+          "request": {
+            "name": "List Profiles",
+            "description": {
+              "content": "Lists all available profiles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d95624b2-758a-4e3a-9e34-a224e62f1907",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4680,\n  \"results\": [\n    {\n      \"url\": \"http://lhN.daflMIkQUQ7BhWrs+SU.ehWHdQ,E-mWKkSoxgFepQl+vFHdjg-\",\n      \"public_id\": \"beeee613-4257-11f8-60ed-b6d71725d996\",\n      \"name\": \"string\",\n      \"gender\": \"X\",\n      \"teams\": [\n        {\n          \"name\": \"string\",\n          \"public_id\": \"0faccca1-ef5b-8b54-3926-e8efbdae9587\",\n          \"url\": \"https://grwTtWuSMkOURmoOURkrjLRmSHQmwXj.uivcRGOE,CFaHavmjOxZVOXurpVNJOgxk+I\",\n          \"avatar\": \"https://aDniucNW.uubSJPwmypka1YKGygp-UjpduTMirF\"\n        },\n        {\n          \"name\": \"string\",\n          \"public_id\": \"2bcbe856-b263-2c6e-111a-2635504a0582\",\n          \"url\": \"http://HnjHnbXOzEnL.koiKn2Sdv6XypZQKsXvHfmkxrGyk\",\n          \"avatar\": \"https://kMYWHRcRJXwJyjWpNPyNc.gendzVBuvbIL3B1G.BdVSDT-3RSMo2Y-+cX3wdzv1pp6LE\"\n        }\n      ],\n      \"reference\": \"string\",\n      \"avatar\": \"http://AvyxxRa.hzqhI,bCwh+l,moNQAcnGo40Z7QDa0+uAD9noM.-GiRTGfSM2APcyx9e0q\"\n    },\n    {\n      \"url\": \"https://DhMvsRGEljiceBtPURTcU.ktxeGd6b28tZsL6dEbChJOgqmW4R9O\",\n      \"public_id\": \"983b2ce2-1c87-97bb-513b-a5aecf9648bd\",\n      \"name\": \"string\",\n      \"gender\": \"F\",\n      \"teams\": [\n        {\n          \"name\": \"string\",\n          \"public_id\": \"6f6acd14-22dc-fd4d-1f99-518fdf2224d2\",\n          \"url\": \"http://LeUnGTmGoPabGsqnnBJbqJjdIFynm.luoxcxOJwPlNQUTHXCXNOkVYABdKtqToYRPbf9L3BiZLebg.AVBo\",\n          \"avatar\": \"https://abtcDUHIe.uqR.QgbmANUcU1aQ3Xk7Es7mcZyPwcwureycpjGrEcGytsR7j9RtpuMYzNzQNIog,9v2\"\n        },\n        {\n          \"name\": \"string\",\n          \"public_id\": \"9196ede5-570c-5398-bc35-5bcf6392ef86\",\n          \"url\": \"http://dqOqQyyMSndpYk.dfxrNdJ5xKhHOGrMHobmKdfxV4ISxxvuc1TCY,ZOVXZffkpoW+Xf9dD9D4o4\",\n          \"avatar\": \"https://mxzSzGoLJMfOSFqQ.hbpJ5WbE3MP\"\n        }\n      ],\n      \"reference\": \"string\",\n      \"avatar\": \"http://KporfiuHNsNmXmToarOmGSLbXLzT.dwigfl8Ev2Jf6aIf7RL4FGCiUmlOm1bmQhxWtzOHhZJf7M\"\n    }\n  ],\n  \"next\": \"https://aCYb.ccaEzjLW0Wmcx.V\",\n  \"previous\": \"https://JYfPlIb.zeudUnUjukxdWL8i,19GYpsjS5wReJJXwr2GL6GEQMsSYLD2AwzwgbsEtujXm4GXa0Nk7kokgs3TU\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19f1a3f4-a7e0-45ed-8917-ed80028994ee",
+          "name": "Create Profile",
+          "request": {
+            "name": "Create Profile",
+            "description": {
+              "content": "\nCreates a new profile.\nThe bearer field contains a profile bearer token. When this is used in the Authorization header actions are performed\nas that profile, which will also enable access to private data.\nUsing a profile bearer token disables administrative features such as creating profiles, making this token safe\nfor 'public' use.\nA profile bearer token has no expiration, so it remains valid as long as the profile is active.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reference\": \"<string>\",\n  \"given_name\": \"<string>\",\n  \"family_name\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"locale\": \"<string>\",\n  \"avatar\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "92f27512-4130-410a-975b-c4f2848fee6d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference\": \"<string>\",\n  \"given_name\": \"<string>\",\n  \"family_name\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"locale\": \"<string>\",\n  \"avatar\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reference\": \"<string>\",\n  \"url\": \"https://EwD.tjpo3cyMmfT+Mya\",\n  \"public_id\": \"7e49be23-507b-518f-dd51-55d6a6a51368\",\n  \"given_name\": \"<string>\",\n  \"family_name\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"zoneinfo\": \"string\",\n  \"locale\": \"<string>\",\n  \"avatar\": \"<uri>\",\n  \"bearer\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a92b3b0-030d-42d1-9180-ffad50047ef1",
+          "name": "profile activity file list",
+          "request": {
+            "name": "profile activity file list",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "activity_file",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c7a639a-ab63-4b44-9df4-d2edf7e2cdae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "activity_file",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e0133f8-a0e5-4391-8c30-0a32dc16e75e",
+          "name": "profile activity file read",
+          "request": {
+            "name": "profile activity file read",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "activity_file",
+                ":activity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "activity_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9969241-7c52-477b-a87b-8a30f6014485",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "activity_file",
+                    ":activity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activity_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6877ec84-46f2-477a-90b5-5a63a05c57c6",
+          "name": "Activity segment",
+          "request": {
+            "name": "Activity segment",
+            "description": {
+              "content": "Lists segments of activities and small non-workout-like movements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "activity_segment",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4967a53-d2b1-4cb2-a06f-a0ee7f6ca1b3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "activity_segment",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6f91f96-c9ee-4904-b9b3-21291a05a851",
+          "name": "Bio Metric",
+          "request": {
+            "name": "Bio Metric",
+            "description": {
+              "content": "Lists changes in weight, height and bmi for the profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "biometric",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4a5d667-1b21-4ce7-b1e1-a7d65128c2aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "biometric",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1960-04-17T23:40:53.924Z\",\n    \"source\": \"SAMSUNG\",\n    \"is_manual\": true,\n    \"weight\": 1048.5627335467861,\n    \"height\": 7987.981636755974,\n    \"bmi\": 9833.709385203141\n  },\n  {\n    \"timestamp\": \"1993-06-17T17:09:37.056Z\",\n    \"source\": \"SUUNTO\",\n    \"is_manual\": true,\n    \"weight\": 8527.081601376369,\n    \"height\": 1195.4288291782743,\n    \"bmi\": 8700.854266136877\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20cf2c45-d610-4ca7-ac49-c6230c1b5c35",
+          "name": "Biometric Measurement",
+          "request": {
+            "name": "Biometric Measurement",
+            "description": {
+              "content": "List changes in biometric measurements for the profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "biometric_measurement",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "944a3485-947b-4968-a677-3e73f946ce77",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "biometric_measurement",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "measurement_type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1958-05-12T10:25:54.283Z\",\n    \"source\": \"HEALTHCONNECT\",\n    \"measurement_type\": \"string\",\n    \"end\": \"2024-12-29T03:13:41.818Z\",\n    \"description\": \"string\",\n    \"is_manual\": false,\n    \"value\": 9543.617946493823,\n    \"unit\": \"string\"\n  },\n  {\n    \"timestamp\": \"1954-08-28T18:51:05.073Z\",\n    \"source\": \"SUUNTO\",\n    \"measurement_type\": \"string\",\n    \"end\": \"2020-04-20T23:26:49.019Z\",\n    \"description\": \"string\",\n    \"is_manual\": false,\n    \"value\": 1653.6326295740344,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fb1c767-2050-4283-a4da-65d9436e86c4",
+          "name": "BMI",
+          "request": {
+            "name": "BMI",
+            "description": {
+              "content": "Presents the Body-Mass-Index over time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "bmi",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6878db90-1ecf-461b-8f63-a0c91aea0582",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "bmi",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1967-07-12T17:40:41.160Z\",\n    \"source\": \"ANDROID\",\n    \"is_manual\": false,\n    \"bmi\": 4988.5898944288\n  },\n  {\n    \"timestamp\": \"1992-03-26T10:23:28.704Z\",\n    \"source\": \"ANDROID\",\n    \"is_manual\": true,\n    \"bmi\": 5008.632153990406\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2918c506-2d84-49c5-b490-69ff0e6f3e50",
+          "name": "Daily details",
+          "request": {
+            "name": "Daily details",
+            "description": {
+              "content": "Intraday data measured at a single point in time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "daily_detail",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5a4cf8d-24ac-4f8c-9ae3-e72319c6e487",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "daily_detail",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1952-09-27T20:53:44.303Z\",\n    \"source\": \"GOOGLEFIT\",\n    \"duration\": \"string\",\n    \"steps\": 3466,\n    \"calories\": 8734.81728272182,\n    \"distance\": 9660.27331012633\n  },\n  {\n    \"timestamp\": \"2022-07-15T05:26:56.779Z\",\n    \"source\": \"OURA\",\n    \"duration\": \"string\",\n    \"steps\": 2503,\n    \"calories\": 7721.450408121015,\n    \"distance\": 3340.1413636573384\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d13e548-83fb-43c5-97e9-0700f731cdd7",
+          "name": "Daily Summary",
+          "request": {
+            "name": "Daily Summary",
+            "description": {
+              "content": "Provides summarized data per day.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "daily_summary",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "deduplicate",
+                  "value": "<boolean>",
+                  "description": "If set to true, duplicates will be aggregated."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1c9adba-9232-48b5-bd55-59e63fdea046",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "daily_summary",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deduplicate",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d95cf090-0518-46a8-b418-9a7867e637a9",
+          "name": "Detail Sample",
+          "request": {
+            "name": "Detail Sample",
+            "description": {
+              "content": "Presents detail samples.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "detail_sample",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "250225fb-14bc-4610-88fc-ea8e4feedebf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "detail_sample",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c645c385-f7c1-4624-be8b-413a90cea218",
+          "name": "Electrocardiograms",
+          "request": {
+            "name": "Electrocardiograms",
+            "description": {
+              "content": "\nThis endpoint returns a list of ECG recordings.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "ecg_recordings",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a83d6fb-80f1-4ff1-9b42-90134fdde656",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "ecg_recordings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1974-05-18T23:50:43.639Z\",\n    \"source\": \"APPLE\",\n    \"duration\": \"string\",\n    \"sample_frequency\": 2885,\n    \"sample_count\": 6465\n  },\n  {\n    \"timestamp\": \"1986-04-08T21:47:29.602Z\",\n    \"source\": \"WITHINGS\",\n    \"duration\": \"string\",\n    \"sample_frequency\": 3717,\n    \"sample_count\": 5610\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e97a9b6-768b-4d9d-b62f-dea97a659d1a",
+          "name": "Electrocardiogram data",
+          "request": {
+            "name": "Electrocardiogram data",
+            "description": {
+              "content": "\nThis endpoint returns an ECG recording with data as an array of tuples `[(time, value)]`.\nSet the argument `date_end` to request a specific recording or leave it empty to receive the latest recording.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "ecg_recordings",
+                "data",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ab3772b-e4ed-460f-be7c-72eaaaff0007",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "ecg_recordings",
+                    "data",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"2017-02-02T01:38:12.642Z\",\n    \"source\": \"MYZONE\",\n    \"duration\": \"string\",\n    \"sample_frequency\": 1805,\n    \"sample_count\": 3170,\n    \"data\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"timestamp\": \"1950-10-04T08:15:11.838Z\",\n    \"source\": \"GOOGLEFIT\",\n    \"duration\": \"string\",\n    \"sample_frequency\": 3838,\n    \"sample_count\": 9175,\n    \"data\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1811d3e9-761b-4833-9191-db3b9fea01fc",
+          "name": "Electrocardiogram PDF",
+          "request": {
+            "name": "Electrocardiogram PDF",
+            "description": {
+              "content": "Returns a PDF with generated ECG charts from a specific source and time. Contact api-support@wefitter.com to gain access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "ecg_recordings",
+                "pdf",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "datetime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The timestamp when the ECG has been recorded in the format `yyyymmddhhmmss`. e.g. `20210913132513`"
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7a561d6c-af11-4eec-a5e7-a2715496fa3a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "ecg_recordings",
+                    "pdf",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datetime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdd5a049-4af6-4cfc-8161-e07c4f3f3255",
+          "name": "Event",
+          "request": {
+            "name": "Event",
+            "description": {
+              "content": "Lists events, generic actions for which points have been awarded.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "event",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b049545b-3c7c-4043-b695-6c1c2b75308b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "event",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1957-04-05T03:48:04.952Z\",\n    \"points\": 4946.580960610779,\n    \"description\": \"string\"\n  },\n  {\n    \"timestamp\": \"1947-01-24T01:54:40.718Z\",\n    \"points\": 5226.909751203596,\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60cfb359-b2be-4e3e-88dd-3292a103cc5d",
+          "name": "Create Event",
+          "request": {
+            "name": "Create Event",
+            "description": {
+              "content": "Create a new event for the profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "event",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"points\": \"<number>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "795d2521-07a9-455d-a083-7289c0fb93d4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "event",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"points\": \"<number>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"<dateTime>\",\n  \"points\": \"<number>\",\n  \"description\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d40bfda-089c-403c-8adb-cf107306a336",
+          "name": "Heart Rate Sample",
+          "request": {
+            "name": "Heart Rate Sample",
+            "description": {
+              "content": "Heart Rate measured at a single point in time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "heartrate_sample",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "heart_rate_detail",
+                  "value": "<boolean>",
+                  "description": "If set to true it will add heart_rate_samples field"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b13e125f-d8bc-4774-b6e4-e628ccc13d98",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "heartrate_sample",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "heart_rate_detail",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbe2831b-30cc-46bb-bb2f-0cb40e06ab1a",
+          "name": "Heart Rate Summary",
+          "request": {
+            "name": "Heart Rate Summary",
+            "description": {
+              "content": "Presents heart rate information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "heartrate_summary",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bfb9302-fa43-421f-b1f4-3869de7e7da3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "heartrate_summary",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d99e168f-2fd2-4aca-8177-c997adb7bd78",
+          "name": "Height",
+          "request": {
+            "name": "Height",
+            "description": {
+              "content": "Lists changes in height for the profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "height",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9a6e22b-2be5-45f5-907c-00d3e5b243b1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "height",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1970-07-09T07:48:37.410Z\",\n    \"source\": \"FITBIT\",\n    \"is_manual\": true,\n    \"height\": 9468.017797005286\n  },\n  {\n    \"timestamp\": \"1954-12-01T11:07:42.267Z\",\n    \"source\": \"POLAR\",\n    \"is_manual\": true,\n    \"height\": 1150.483868635841\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3132ddeb-2939-4e94-af76-9276666ac0b3",
+          "name": "Sleep detail",
+          "request": {
+            "name": "Sleep detail",
+            "description": {
+              "content": "Provides sleep detail data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "sleep_detail",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "927843f0-ac65-4304-9516-0156f106cfc2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "sleep_detail",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42394831-d8e8-40ca-beb1-29a18adab080",
+          "name": "Sleep Sample",
+          "request": {
+            "name": "Sleep Sample",
+            "description": {
+              "content": "Presents sample data for sleep: hrv, movement, heart_rate and sleep_stages,",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "sleep_sample",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f688825b-4864-4aa7-ae55-92b4ab26301e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "sleep_sample",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f28ae60-c361-414c-a7e7-db84573eadc9",
+          "name": "Sleep Summary",
+          "request": {
+            "name": "Sleep Summary",
+            "description": {
+              "content": "Provides summarized sleep data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "sleep_summary",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "detail",
+                  "value": "<boolean>",
+                  "description": "If set to true and only 1 result is returned, it will add a detail field"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "baba17f8-1429-4a94-9df1-36dd52ea003a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "sleep_summary",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e28c9a0-e6c6-4f60-ac3d-dfb04e8d3cdc",
+          "name": "Stress Sample",
+          "request": {
+            "name": "Stress Sample",
+            "description": {
+              "content": "Presents stress samples.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "stress_samples",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccabb00f-c022-4a6f-9d0d-3bc058b455bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "stress_samples",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"2021-04-25T18:18:03.938Z\",\n    \"source\": \"MYZONE\",\n    \"stress_value\": 8230\n  },\n  {\n    \"timestamp\": \"2002-05-29T05:02:20.261Z\",\n    \"source\": \"APPLE\",\n    \"stress_value\": 2025\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90ff89fa-d9a5-41f5-bfd3-4cca9bac7262",
+          "name": "Stress Summary",
+          "request": {
+            "name": "Stress Summary",
+            "description": {
+              "content": "Presents stress summaries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "stress_summary",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "162298e4-117f-4095-8a81-23b8b560edf3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "stress_summary",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c184ded3-2c47-4412-8b7f-f68cfc96a958",
+          "name": "Track Sample",
+          "request": {
+            "name": "Track Sample",
+            "description": {
+              "content": "Presents GPX track samples.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "track_sample",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3b4ffdd-fced-4f35-b4d3-a784157ec059",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "track_sample",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f866455b-442e-4526-98c3-7c6bf557ea76",
+          "name": "Weight",
+          "request": {
+            "name": "Weight",
+            "description": {
+              "content": "Lists changes in weight for the profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "weight",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6042445d-58c5-488b-8f6c-5ea2b5bcc49c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "weight",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"2024-04-01T19:07:00.693Z\",\n    \"source\": \"OURA\",\n    \"is_manual\": true,\n    \"weight\": 8567.45055210496\n  },\n  {\n    \"timestamp\": \"1975-02-07T04:37:06.170Z\",\n    \"source\": \"STRAVA\",\n    \"is_manual\": false,\n    \"weight\": 9425.796920437011\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2215d51-681b-43e7-9e42-6c1854969bcd",
+          "name": "Workout",
+          "request": {
+            "name": "Workout",
+            "description": {
+              "content": "Lists workouts associated with the profile. Used to be known as Activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":profile_public_id",
+                "workout",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Lower bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Upper bound of date or timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "deduplicate",
+                  "value": "<boolean>",
+                  "description": "If set to true, duplicates will be aggregated."
+                },
+                {
+                  "disabled": false,
+                  "key": "heart_rate_detail",
+                  "value": "<boolean>",
+                  "description": "If set to true and page_size is 1, it will add heart_rate_samples field"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1a82157-b810-4220-997e-f4848cd910c9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":profile_public_id",
+                    "workout",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deduplicate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "heart_rate_detail",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Next page.",
+                  "key": "api-results-next",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Previous page.",
+                  "key": "api-results-previous",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c8bba15-602b-4ea6-9436-0fb043517bc9",
+          "name": "Get Profile",
+          "request": {
+            "name": "Get Profile",
+            "description": {
+              "content": "Gets a single profile",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e09ec0e0-ffc8-4f13-a0ac-339720a15db9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa04b7b1-8901-4c24-931c-f2b02c762323",
+          "name": "Update profile",
+          "request": {
+            "name": "Update profile",
+            "description": {
+              "content": "Updates the specified profile, excluding ID, team and public id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"given_name\": \"<string>\",\n  \"family_name\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"locale\": \"<string>\",\n  \"total_calories\": \"<number>\",\n  \"total_distance\": \"<number>\",\n  \"total_steps\": \"<number>\",\n  \"total_points\": \"<number>\",\n  \"reference\": \"<string>\",\n  \"avatar\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07e75095-9381-420c-98b0-740f9c95b253",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ac0fbf1-a254-4fb8-85f0-25b2a64df492",
+          "name": "Partial Update",
+          "request": {
+            "name": "Partial Update",
+            "description": {
+              "content": "Performs a partial update",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"given_name\": \"<string>\",\n  \"family_name\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birthdate\": \"<date>\",\n  \"locale\": \"<string>\",\n  \"total_calories\": \"<number>\",\n  \"total_distance\": \"<number>\",\n  \"total_steps\": \"<number>\",\n  \"total_points\": \"<number>\",\n  \"reference\": \"<string>\",\n  \"avatar\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc0048bd-a53d-4585-9060-0f9780882546",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dfdd770-eedf-4312-9930-51ba3958ab32",
+          "name": "Delete Profile",
+          "request": {
+            "name": "Delete Profile",
+            "description": {
+              "content": "Deletes the specified profile, if created by the app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":public_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "13d7322e-88ea-4bae-ab1f-f3e94fb3f73b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":public_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0b6cfa1-8273-4e8e-93a8-aaa88f1d2b8e",
+          "name": "Challenge",
+          "request": {
+            "name": "Challenge",
+            "description": {
+              "content": "Provides a list of challenges where the profile can participate and is already participating in.\n\nThis endpoint returns a list of objects.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":public_id",
+                "challenge",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "recent",
+                  "value": "<integer>",
+                  "description": "Show challenges that have not ended in the last N weeks"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<dateTime>",
+                  "description": "Only return challenges that are active after this time\n\nNote: this only affects challenges that are not joined.\n\nDefaults to now"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<dateTime>",
+                  "description": "Only return challenges that are active before this time\n\nNote: this only affects challenges that are not joined.\n\nDefaults to now"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4b8ac83-edc3-44bc-b223-407b0e2b8980",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":public_id",
+                    "challenge",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "recent",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "date_start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"start\": \"1981-06-28T07:34:02.666Z\",\n  \"type\": \"INDIVIDUAL\",\n  \"goal\": \"DAILY\",\n  \"goal_type\": \"STEPS\",\n  \"visibility\": \"PUBLIC\",\n  \"repetition\": \"STREAK\",\n  \"url\": \"https://UZyUocxwFyodatEFVzeYubuPsb.bmdpdCQVAGChA-AomZPpOwTkidBLkwKyNtuCS4yBbjqYX0,VXRVRBPEOHaJALQvJU5r-G\",\n  \"public_id\": \"1a8926cb-a5cc-488a-564c-39d83481b7e9\",\n  \"slogan\": \"string\",\n  \"description\": \"string\",\n  \"end\": \"1975-04-08T20:20:05.216Z\",\n  \"goal_value\": 50300174,\n  \"num_members\": \"string\",\n  \"leaderboard_rank\": 1650,\n  \"leaderboard_score\": 3981.8461630233915,\n  \"is_participating\": true,\n  \"enrollment\": {\n    \"team\": \"string\",\n    \"team_public_id\": \"string\",\n    \"team_size\": 863,\n    \"leaderboard_rank\": 8997,\n    \"leaderboard_score\": 9061.406346253885\n  },\n  \"avatar\": \"http://xBsrsjYvKGUPoItWzZkfvqY.qxOs2MkA7TwRyQLmt2ytjBM-aEZTfUkAUoT,piAI7AYxieGC,uMUtjryRUuHe\",\n  \"data_source\": \"string\",\n  \"activity_types\": [\n    {\n      \"activity_type\": \"CROSSFIT\"\n    },\n    {\n      \"activity_type\": \"ROWING\"\n    }\n  ],\n  \"current_period_start\": \"2000-12-19T12:07:57.308Z\",\n  \"current_period_end\": \"1957-10-07T22:16:20.386Z\",\n  \"goal_cap\": true,\n  \"joined\": \"1959-02-10T21:43:24.510Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1161168-e688-4ae1-891c-c5f97c930c5f",
+          "name": "profile challenges",
+          "request": {
+            "name": "profile challenges",
+            "description": {
+              "content": "This docstring is used by Django Rest Framework",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":public_id",
+                "challenges",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37643e58-260b-4865-a225-d36b7f9fe94e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":public_id",
+                    "challenges",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"start\": \"1990-02-28T02:29:20.598Z\",\n  \"type\": \"GROUP\",\n  \"goal\": \"DAILY\",\n  \"goal_type\": \"DISTANCE\",\n  \"visibility\": \"PRIVATE\",\n  \"repetition\": \"STREAK\",\n  \"url\": \"https://AzFEFvtJmXoMRYOOowLYmRSZhFirIGWaY.uasuyf3iiKVTYTHOUGhTC6ljKwOhwFLZCWTQ\",\n  \"public_id\": \"7dcafa1e-bf7d-97d6-6ed9-0834e1012e35\",\n  \"slogan\": \"string\",\n  \"description\": \"string\",\n  \"end\": \"1977-11-01T06:45:09.588Z\",\n  \"goal_value\": -1307349096,\n  \"num_members\": \"string\",\n  \"leaderboard_rank\": 9050,\n  \"leaderboard_score\": 203.81489659692775,\n  \"is_participating\": false,\n  \"enrollment\": {\n    \"team\": \"string\",\n    \"team_public_id\": \"string\",\n    \"team_size\": 1290,\n    \"leaderboard_rank\": 2065,\n    \"leaderboard_score\": 1169.1780767578186\n  },\n  \"avatar\": \"https://ltQsDLwGLSYVk.jafhP3UVVblQq\",\n  \"data_source\": \"string\",\n  \"activity_types\": [\n    {\n      \"activity_type\": \"WALKING\"\n    },\n    {\n      \"activity_type\": \"ROWING\"\n    }\n  ],\n  \"current_period_start\": \"1972-01-30T07:15:10.063Z\",\n  \"current_period_end\": \"1957-03-23T01:04:05.925Z\",\n  \"goal_cap\": true,\n  \"joined\": \"1993-06-16T11:53:37.890Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c451a081-7f9b-4491-86a3-60aeac25da69",
+          "name": "Connections",
+          "request": {
+            "name": "Connections",
+            "description": {
+              "content": "Lists the connections available for a profile and their \"state\".\nThis endpoint returns a list of objects.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":public_id",
+                "connections",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "<string>",
+                  "description": "After connecting redirect back to this url.\n\nNote: has to be a valid http url. For deeplinks (to apps) first redirect to your own backend and then deeplink from there.\n\nNote: the user is only redirected on a successfull connection, otherwise an error screen is shown. (see redirect_on_error to change this)\n\nNote: if this parameter is omitted, then user will see a generic success screen."
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_on_error",
+                  "value": "<boolean>",
+                  "description": "If enabled, then user will also be redirected to the redirect url if an error occurs\n\nNote: a query parameter 'error' is added to the redirect url. Possible values are access_denied, unknown. New values may be added at anytime\n\nNote: for backwards compatibility the default is false, but this will be changed in the next breaking release"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "public_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1222c7e4-b1b9-4acb-ab9c-af69372fae06",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":public_id",
+                    "connections",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_on_error",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "public_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"display_name\": \"string\",\n  \"url\": \"string\",\n  \"connected\": \"ERROR\",\n  \"connection_slug\": \"string\",\n  \"img_url\": \"string\",\n  \"created_at\": \"1950-05-02T19:16:47.703Z\",\n  \"updated_at\": \"2012-03-29T01:37:00.463Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wefitter.com/api/v1.3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c101cd7f-f20b-4aed-86b1-b318bd82b2c3",
+    "name": "WeFitter app profile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the WeFitter API\n\nContact Support:\n Email: hello@wefitter.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "app",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Totals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/app/totals/"
+          },
+          "docs": "Total values for calories, distance, steps, points and activity duration over all profiles in the app."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

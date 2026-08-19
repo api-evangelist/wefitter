@@ -1,0 +1,497 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app challenge API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "challenge",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Challenges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "recent",
+                "value": "",
+                "type": "query",
+                "description": "Show challenges that have not ended in the last N weeks"
+              }
+            ]
+          },
+          "docs": "Lists all available challenges"
+        },
+        {
+          "info": {
+            "name": "Create challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/challenge/"
+          },
+          "docs": "Creates a new challenge"
+        },
+        {
+          "info": {
+            "name": "Team leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/:challenge_public_id/team/",
+            "params": [
+              {
+                "name": "challenge_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "date_range",
+                "value": "",
+                "type": "query",
+                "description": "Index of the time period use"
+              }
+            ]
+          },
+          "docs": "List the standings of different teams in challenges (don't have to be team challenges).\nThis endpoint returns a list of objects.\n"
+        },
+        {
+          "info": {
+            "name": "Team contribution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/:challenge_public_id/team/:team_public_id/",
+            "params": [
+              {
+                "name": "challenge_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date_range",
+                "value": "",
+                "type": "query",
+                "description": "Index of the time period use"
+              }
+            ]
+          },
+          "docs": "List team members' contribution to the challenge.\nThis endpoint returns a list of objects.\n"
+        },
+        {
+          "info": {
+            "name": "Get Challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a single challenge"
+        },
+        {
+          "info": {
+            "name": "Edit challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/challenge/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Edits a challenge"
+        },
+        {
+          "info": {
+            "name": "Partial edit challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/challenge/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Edits a challenge"
+        },
+        {
+          "info": {
+            "name": "Delete challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/challenge/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "deletes a challenge"
+        },
+        {
+          "info": {
+            "name": "Deactivate member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/challenge/:public_id/deactivate_member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A profile public_id is expected"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "query",
+                "description": "A team public_id is expected"
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "Whether profile actively participates in challenge.\n\nWhile inactive, scores/leaderboard will not be updated but still be visible."
+              }
+            ]
+          },
+          "docs": "Deactivate a member from the challenge"
+        },
+        {
+          "info": {
+            "name": "challenge_deactivate_member_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/challenge/:public_id/deactivate_member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This docstring is used by Django Rest Framework"
+        },
+        {
+          "info": {
+            "name": "Deactivate members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/challenge/:public_id/deactivate_members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A profile public_id is expected"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "query",
+                "description": "A team public_id is expected"
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "Whether profile actively participates in challenge.\n\nWhile inactive, scores/leaderboard will not be updated but still be visible."
+              }
+            ]
+          },
+          "docs": "Deactivate multiple members from the challenge"
+        },
+        {
+          "info": {
+            "name": "challenge_deactivate_members_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/challenge/:public_id/deactivate_members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This docstring is used by Django Rest Framework"
+        },
+        {
+          "info": {
+            "name": "Leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/:public_id/leaderboard/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date_range",
+                "value": "",
+                "type": "query",
+                "description": "Index of the time period use"
+              }
+            ]
+          },
+          "docs": "Displays the leaderboard for a challenge.\nThis endpoint returns a list of objects.\n"
+        },
+        {
+          "info": {
+            "name": "Leaderboard history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/:public_id/leaderboard_history/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the scores of the authenticated profile for all periods since the profile joined the challenge.\nThis endpoint returns a list of objects.\n"
+        },
+        {
+          "info": {
+            "name": "Add member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/challenge/:public_id/member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add member to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n"
+        },
+        {
+          "info": {
+            "name": "Add member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/challenge/:public_id/member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add member to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n"
+        },
+        {
+          "info": {
+            "name": "Remove member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/challenge/:public_id/member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A profile public_id is expected"
+              }
+            ]
+          },
+          "docs": "Remove a member from the challenge"
+        },
+        {
+          "info": {
+            "name": "Get members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/:public_id/members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of members enrolled to a Challenge"
+        },
+        {
+          "info": {
+            "name": "Add members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/challenge/:public_id/members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add members to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n\nNote: for the GET/POST endpoint an admin bearer token is required, while the GET also accepts profile bearer tokens"
+        },
+        {
+          "info": {
+            "name": "Add members",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/challenge/:public_id/members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add members to a team.\n\nNote: for now if the challenge is a team challenge and no team is specified, the first team for the specified profile is\nused. Do note that this is a temporary fix and may be removed at any time.\n\nNote: for the GET/POST endpoint an admin bearer token is required, while the GET also accepts profile bearer tokens"
+        },
+        {
+          "info": {
+            "name": "Periods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/challenge/:public_id/periods/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all periods for the challenge.\nThis endpoint returns a list of objects.\n"
+        },
+        {
+          "info": {
+            "name": "Remove members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/challenge/:public_id/remove_members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove members from the challenge"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app team API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "team",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/team/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ]
+          },
+          "docs": "List all available teams"
+        },
+        {
+          "info": {
+            "name": "Create Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/team/"
+          },
+          "docs": "Creates a new team"
+        },
+        {
+          "info": {
+            "name": "Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/team/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single team"
+        },
+        {
+          "info": {
+            "name": "Edit Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/team/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates a new team"
+        },
+        {
+          "info": {
+            "name": "Partial Edit a Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/team/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates a new team"
+        },
+        {
+          "info": {
+            "name": "Deletes a Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/team/:public_id/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an existing team"
+        },
+        {
+          "info": {
+            "name": "Add member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/team/:public_id/member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add member to a team"
+        },
+        {
+          "info": {
+            "name": "Add member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/team/:public_id/member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add member to a team"
+        },
+        {
+          "info": {
+            "name": "Remove member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/team/:public_id/member/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A profile public_id is expected"
+              }
+            ]
+          },
+          "docs": "Remove a member from the team"
+        },
+        {
+          "info": {
+            "name": "Add members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/team/:public_id/members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add members to a team"
+        },
+        {
+          "info": {
+            "name": "Add members",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/team/:public_id/members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add members to a team"
+        },
+        {
+          "info": {
+            "name": "Remove members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/team/:public_id/remove_members/",
+            "params": [
+              {
+                "name": "public_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove members from the team"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

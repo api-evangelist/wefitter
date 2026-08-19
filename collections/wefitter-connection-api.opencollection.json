@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WeFitter app connection API",
+    "version": "v1.3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "connection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Connect wearable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/connection/:connection_slug/connect/",
+            "params": [
+              {
+                "name": "connection_slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get OAuth URL for this connection."
+        },
+        {
+          "info": {
+            "name": "Disconnect Wearable",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/connection/:connection_slug/connect/",
+            "params": [
+              {
+                "name": "connection_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "profile",
+                "value": "",
+                "type": "query",
+                "description": "A profile public_id is expected"
+              }
+            ]
+          },
+          "docs": "Disconnect a wearables connection"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
