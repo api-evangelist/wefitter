@@ -55,6 +55,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - App
+  tags_raw:
   - app
   properties:
   - type: OpenAPI
@@ -112,6 +114,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Challenge
+  tags_raw:
   - challenge
   properties:
   - type: OpenAPI
@@ -126,6 +130,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Connection
+  tags_raw:
   - connection
   properties:
   - type: OpenAPI
@@ -140,6 +146,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Insights
+  tags_raw:
   - insights
   properties:
   - type: OpenAPI
@@ -154,6 +162,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Loyalty
+  tags_raw:
   - loyalty
   properties:
   - type: OpenAPI
@@ -182,6 +192,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Notification
+  tags_raw:
   - notification
   properties:
   - type: OpenAPI
@@ -210,6 +222,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Profile
+  tags_raw:
   - profile
   properties:
   - type: OpenAPI
@@ -224,6 +238,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Team
+  tags_raw:
   - team
   properties:
   - type: OpenAPI
@@ -255,6 +271,8 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
+  - Token
+  tags_raw:
   - token
   properties:
   - type: OpenAPI
