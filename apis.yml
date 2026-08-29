@@ -15,6 +15,18 @@ description: >-
   (biological age, recommendations) on top. Organizations use it to build corporate
   wellbeing, digital fitness, e-health and insurance solutions. WeFitter also ships
   mobile SDK bridges for Apple Health, Samsung Health and Android Health Connect.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
