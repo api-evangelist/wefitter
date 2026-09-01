@@ -126,7 +126,7 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
-  - challenge
+  - Challenge
   tags_raw:
   - challenge
   properties:
@@ -142,7 +142,7 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
-  - connection
+  - Connection
   tags_raw:
   - connection
   properties:
@@ -174,7 +174,7 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
-  - loyalty
+  - Loyalty
   tags_raw:
   - loyalty
   properties:
