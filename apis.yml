@@ -235,7 +235,7 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
-  - Profile
+  - Profiles
   tags_raw:
   - profile
   properties:
@@ -284,7 +284,7 @@ apis:
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
   tags:
-  - Token
+  - Tokens
   tags_raw:
   - token
   properties:
