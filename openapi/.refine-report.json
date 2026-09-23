@@ -1,15 +1,7 @@
 {
   "provider": "wefitter",
   "sources": [
-    "wefitter-app-api-openapi.yml",
-    "wefitter-challenge-api-openapi.yml",
-    "wefitter-connection-api-openapi.yml",
-    "wefitter-insights-api-openapi.yml",
-    "wefitter-loyalty-api-openapi.yml",
-    "wefitter-notification-api-openapi.yml",
-    "wefitter-profile-api-openapi.yml",
-    "wefitter-team-api-openapi.yml",
-    "wefitter-token-api-openapi.yml"
+    "_original/wefitter-openapi-original.json"
   ],
   "outputs": [
     "wefitter-app-api-openapi.yml",
@@ -25,6 +17,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wefitter-openapi-original.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "wefitter-openapi-original.json: declared missing tag: app",
+    "wefitter-openapi-original.json: declared missing tag: insights",
+    "wefitter-openapi-original.json: declared missing tag: loyalty",
+    "wefitter-openapi-original.json: declared missing tag: team",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "wefitter-app-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-challenge-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-connection-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-insights-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-loyalty-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-notification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-team-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wefitter-token-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

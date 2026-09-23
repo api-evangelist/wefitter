@@ -1,6 +1,6 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: WeFitter app connection API
+  title: WeFitter Connection API
   description: This is the WeFitter API
   termsOfService: https://www.wefitter.com/privacy/
   contact:
@@ -8,18 +8,12 @@ info:
   license:
     name: BSD License
   version: v1.3
-host: api.wefitter.com
-basePath: /api/v1.3
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://api.wefitter.com/api/v1.3
 security:
 - BearerProfile: []
 tags:
-- name: connection
+- name: Connection
   description: Connections are the links between profiles and their wearables.
 paths:
   /connection/{connection_slug}/connect/:
@@ -27,25 +21,28 @@ paths:
     - name: connection_slug
       in: path
       required: true
-      type: string
+      schema:
+        type: string
     post:
       operationId: connection_connect_create
       summary: Connect wearable
       description: Get OAuth URL for this connection.
-      parameters:
-      - name: data
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/ProfileAsProfilePublicId'
       responses:
         '200':
           description: ''
-          schema:
-            $ref: '#/definitions/AppConnectionUrl'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppConnectionUrl'
       tags:
-      - connection
+      - Connection
       deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileAsProfilePublicId'
+        required: true
     delete:
       operationId: connection_connect_delete
       summary: Disconnect Wearable
@@ -55,60 +52,63 @@ paths:
         in: query
         description: A profile public_id is expected
         required: true
-        type: string
-        format: uuid
+        schema:
+          type: string
+          format: uuid
       responses:
         '200':
           description: OK
       tags:
-      - connection
+      - Connection
       deprecated: false
-definitions:
-  ProfileAsProfilePublicId:
-    required:
-    - profile
-    type: object
-    properties:
-      profile:
-        title: Profile
-        description: A profile public_id is expected
-        type: string
-        format: uuid
-      joined:
-        title: Joined
-        description: The timestamp when the profile/team joined the challenge.
-        type: string
-        format: date-time
-  AppConnectionUrl:
-    required:
-    - next
-    type: object
-    properties:
-      next:
-        title: Next
-        type: string
-        format: uri
-        minLength: 1
-securityDefinitions:
-  Basic:
-    type: basic
-    description: 'Basic Authentication is used to create administrator bearer tokens.
+components:
+  schemas:
+    AppConnectionUrl:
+      required:
+      - next
+      type: object
+      properties:
+        next:
+          title: Next
+          type: string
+          format: uri
+          minLength: 1
+    ProfileAsProfilePublicId:
+      required:
+      - profile
+      type: object
+      properties:
+        profile:
+          title: Profile
+          description: A profile public_id is expected
+          type: string
+          format: uuid
+        joined:
+          title: Joined
+          description: The timestamp when the profile/team joined the challenge.
+          type: string
+          format: date-time
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic
+      description: 'Basic Authentication is used to create administrator bearer tokens.
 
 
-      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
-  BearerProfile:
-    type: apiKey
-    name: Authorization
-    in: header
-    description: 'Bearer authentication for logged-in profiles.
+        Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+    BearerProfile:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Bearer authentication for logged-in profiles.
 
 
-      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
-  BearerAdmin:
-    type: apiKey
-    name: Authorization
-    in: header
-    description: 'Bearer authentication for administrators.
+        When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+    BearerAdmin:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Bearer authentication for administrators.
 
 
-      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+        When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'

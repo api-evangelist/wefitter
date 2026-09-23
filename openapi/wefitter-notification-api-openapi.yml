@@ -1,6 +1,6 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: WeFitter app notification API
+  title: WeFitter Notification API
   description: This is the WeFitter API
   termsOfService: https://www.wefitter.com/privacy/
   contact:
@@ -8,19 +8,31 @@ info:
   license:
     name: BSD License
   version: v1.3
-host: api.wefitter.com
-basePath: /api/v1.3
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://api.wefitter.com/api/v1.3
 security:
 - BearerProfile: []
 tags:
-- name: notification
-  description: "Send a notification to all devices for the specified profiles\nThe data will be sent to the client in the following format:\n```\n{\n        \"app\": <app public id>,\n        \"title\": <title>,\n        \"body\": <body>,\n        \"link\": <optional link>\n}\n```\n"
+- name: Notification
+  description: 'Send a notification to all devices for the specified profiles
+
+    The data will be sent to the client in the following format:
+
+    ```
+
+    {
+
+    "app": ,
+
+    "title": ,
+
+    "body": ,
+
+    "link":
+
+    }
+
+    ```'
 paths:
   /notification/send_to_all/:
     parameters: []
@@ -28,124 +40,132 @@ paths:
       operationId: notification_send_to_all_create
       summary: Notification to all profiles in app
       description: Send a notification to all registered devices in the app.
-      parameters:
-      - name: data
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/Notification'
       responses:
         '201':
           description: ''
-          schema:
-            $ref: '#/definitions/Notification'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
       tags:
-      - notification
+      - Notification
       security:
       - BearerAdmin: []
       deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Notification'
+        required: true
   /notification/send_to_profiles/:
     parameters: []
     post:
       operationId: notification_send_to_profiles_create
       summary: Notification to specific profiles
       description: Send a notification to all registered devices for the specified profiles.
-      parameters:
-      - name: data
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/NotificationForProfiles'
       responses:
         '201':
           description: ''
-          schema:
-            $ref: '#/definitions/NotificationForProfiles'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationForProfiles'
       tags:
-      - notification
+      - Notification
       security:
       - BearerAdmin: []
       deprecated: false
-definitions:
-  Notification:
-    required:
-    - title
-    - body
-    type: object
-    properties:
-      title:
-        title: Title
-        type: string
-        maxLength: 512
-        minLength: 1
-      body:
-        title: Body
-        type: string
-        maxLength: 2048
-        minLength: 1
-      schedule:
-        title: Schedule
-        description: date and time to send notification
-        type: string
-        format: date-time
-        x-nullable: true
-      link:
-        title: Link
-        type: string
-        maxLength: 1024
-  NotificationForProfiles:
-    required:
-    - title
-    - body
-    - profiles
-    type: object
-    properties:
-      title:
-        title: Title
-        type: string
-        maxLength: 512
-        minLength: 1
-      body:
-        title: Body
-        type: string
-        maxLength: 2048
-        minLength: 1
-      schedule:
-        title: Schedule
-        description: date and time to send notification
-        type: string
-        format: date-time
-        x-nullable: true
-      link:
-        title: Link
-        type: string
-        maxLength: 1024
-      profiles:
-        type: array
-        items:
-          description: The profiles to send the push notification to
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationForProfiles'
+        required: true
+components:
+  schemas:
+    Notification:
+      required:
+      - title
+      - body
+      type: object
+      properties:
+        title:
+          title: Title
           type: string
-          format: uuid
-securityDefinitions:
-  Basic:
-    type: basic
-    description: 'Basic Authentication is used to create administrator bearer tokens.
+          maxLength: 512
+          minLength: 1
+        body:
+          title: Body
+          type: string
+          maxLength: 2048
+          minLength: 1
+        schedule:
+          title: Schedule
+          description: date and time to send notification
+          type:
+          - string
+          - 'null'
+          format: date-time
+        link:
+          title: Link
+          type: string
+          maxLength: 1024
+    NotificationForProfiles:
+      required:
+      - title
+      - body
+      - profiles
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          maxLength: 512
+          minLength: 1
+        body:
+          title: Body
+          type: string
+          maxLength: 2048
+          minLength: 1
+        schedule:
+          title: Schedule
+          description: date and time to send notification
+          type:
+          - string
+          - 'null'
+          format: date-time
+        link:
+          title: Link
+          type: string
+          maxLength: 1024
+        profiles:
+          type: array
+          items:
+            description: The profiles to send the push notification to
+            type: string
+            format: uuid
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic
+      description: 'Basic Authentication is used to create administrator bearer tokens.
 
 
-      Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
-  BearerProfile:
-    type: apiKey
-    name: Authorization
-    in: header
-    description: 'Bearer authentication for logged-in profiles.
+        Once a bearer token has been made, remove this auth. (''logout'' in Swagger'')'
+    BearerProfile:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Bearer authentication for logged-in profiles.
 
 
-      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
-  BearerAdmin:
-    type: apiKey
-    name: Authorization
-    in: header
-    description: 'Bearer authentication for administrators.
+        When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+    BearerAdmin:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Bearer authentication for administrators.
 
 
-      When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
+        When using the GUI, please don''t forget to prefix your bearer tokens with the text ''bearer'', followed by a space.'
