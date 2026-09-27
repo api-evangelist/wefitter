@@ -63,7 +63,7 @@ tags:
 - Activity Tracking
 apis:
 - aid: wefitter:wefitter-app-api
-  name: WeFitter app API
+  name: WeFitter App API
   description: The app API from WeFitter — 1 operation(s) for app.
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
@@ -79,7 +79,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-challenge-api
-  name: WeFitter challenge API
+  name: WeFitter Challenge API
   description: >-
     WeFitter API’s challenge engine will bring endless engagement to your platform.
 
@@ -138,7 +138,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-connection-api
-  name: WeFitter connection API
+  name: WeFitter Connection API
   description: Connections are the links between profiles and their wearables.
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
@@ -154,7 +154,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-insights-api
-  name: WeFitter insights API
+  name: WeFitter Insights API
   description: The insights API from WeFitter — 1 operation(s) for insights.
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
@@ -170,7 +170,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-loyalty-api
-  name: WeFitter loyalty API
+  name: WeFitter Loyalty API
   description: The loyalty API from WeFitter — 2 operation(s) for loyalty.
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
@@ -186,7 +186,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-notification-api
-  name: WeFitter notification API
+  name: WeFitter Notification API
   description: >-
     Send a notification to all devices for the specified profiles
 
@@ -216,7 +216,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-profile-api
-  name: WeFitter profile API
+  name: WeFitter Profile API
   description: >-
     Profiles are containers for wearables data.
 
@@ -246,7 +246,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-team-api
-  name: WeFitter team API
+  name: WeFitter Team API
   description: The team API from WeFitter — 5 operation(s) for team.
   humanURL: https://www.wefitter.com/en-us/developers/
   baseURL: https://api.wefitter.com/api/v1.3
@@ -262,7 +262,7 @@ apis:
   - type: APIReference
     url: https://api.wefitter.com/api/v1.3/redoc/
 - aid: wefitter:wefitter-token-api
-  name: WeFitter token API
+  name: WeFitter Token API
   description: >-
     <p>
 
