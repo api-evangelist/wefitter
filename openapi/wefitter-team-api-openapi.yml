@@ -329,28 +329,52 @@ paths:
         required: true
 components:
   schemas:
-    ProfilePublicIdsList:
+    ProfileAsProfilePublicId:
       required:
-      - profiles
+      - profile
       type: object
       properties:
-        profiles:
-          type: array
-          items:
-            type: string
-            format: uuid
-        is_active:
-          title: Is active
-          description: 'Whether profile actively participates in challenge.
-
-
-            While inactive, scores/leaderboard will not be updated but still be visible.'
-          type: boolean
+        profile:
+          title: Profile
+          description: A profile public_id is expected
+          type: string
+          format: uuid
         joined:
           title: Joined
           description: The timestamp when the profile/team joined the challenge.
           type: string
           format: date-time
+    TeamList:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+          maxLength: 100
+          minLength: 1
+        public_id:
+          title: Public id
+          type: string
+          format: uuid
+          readOnly: true
+        url:
+          title: Url
+          type: string
+          format: uri
+          readOnly: true
+        num_members:
+          title: Num members
+          type: string
+          readOnly: true
+        avatar:
+          title: Avatar
+          type:
+          - string
+          - 'null'
+          format: uri
+          minLength: 1
     TeamDetail:
       required:
       - name
@@ -393,47 +417,23 @@ components:
           title: Description
           type: string
           minLength: 1
-    TeamList:
+    ProfilePublicIdsList:
       required:
-      - name
+      - profiles
       type: object
       properties:
-        name:
-          title: Name
-          type: string
-          maxLength: 100
-          minLength: 1
-        public_id:
-          title: Public id
-          type: string
-          format: uuid
-          readOnly: true
-        url:
-          title: Url
-          type: string
-          format: uri
-          readOnly: true
-        num_members:
-          title: Num members
-          type: string
-          readOnly: true
-        avatar:
-          title: Avatar
-          type:
-          - string
-          - 'null'
-          format: uri
-          minLength: 1
-    ProfileAsProfilePublicId:
-      required:
-      - profile
-      type: object
-      properties:
-        profile:
-          title: Profile
-          description: A profile public_id is expected
-          type: string
-          format: uuid
+        profiles:
+          type: array
+          items:
+            type: string
+            format: uuid
+        is_active:
+          title: Is active
+          description: 'Whether profile actively participates in challenge.
+
+
+            While inactive, scores/leaderboard will not be updated but still be visible.'
+          type: boolean
         joined:
           title: Joined
           description: The timestamp when the profile/team joined the challenge.
