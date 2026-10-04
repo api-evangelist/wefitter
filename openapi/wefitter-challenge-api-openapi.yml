@@ -748,147 +748,6 @@ components:
           type: string
           format: uri
           minLength: 1
-    ChallengeList:
-      required:
-      - title
-      - start
-      - type
-      - goal
-      - goal_type
-      - visibility
-      - repetition
-      type: object
-      properties:
-        url:
-          title: Url
-          type: string
-          format: uri
-          readOnly: true
-        public_id:
-          title: Public id
-          type: string
-          format: uuid
-          readOnly: true
-        title:
-          title: Title
-          type: string
-          minLength: 1
-        slogan:
-          title: Slogan
-          type: string
-        description:
-          title: Description
-          type: string
-        start:
-          title: Start
-          type: string
-          format: date-time
-        end:
-          title: End
-          type:
-          - string
-          - 'null'
-          format: date-time
-        type:
-          title: Type
-          type: string
-          enum:
-          - INDIVIDUAL
-          - GROUP
-          - TEAM
-        goal:
-          title: Goal
-          type: string
-          enum:
-          - DAILY
-          - TOTAL
-          - WEEKLY
-          - MONTHLY
-        goal_value:
-          title: Goal value
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: -2147483648
-        goal_type:
-          title: Goal type
-          type: string
-          enum:
-          - POINTS
-          - DISTANCE
-          - CALORIES
-          - DURATION
-          - STEPS
-        visibility:
-          title: Visibility
-          type: string
-          enum:
-          - PUBLIC
-          - PRIVATE
-        num_members:
-          title: Num members
-          type: string
-          readOnly: true
-        repetition:
-          title: Repetition
-          type: string
-          enum:
-          - NONE
-          - STREAK
-          - STICKTOIT
-          - GOALBREAKER
-        avatar:
-          title: Avatar
-          type:
-          - string
-          - 'null'
-          format: uri
-          minLength: 1
-        data_source:
-          title: Data source
-          type: string
-          readOnly: true
-          minLength: 1
-        activity_types:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChallengeActivityType'
-        current_period_start:
-          title: Current period start
-          description: The start (exclusive) of the current period. Null if the challenge has not started yet.
-          type: string
-          format: date-time
-          readOnly: true
-        current_period_end:
-          title: Current period end
-          description: The end (exclusive) of the current period. Null if the challenge end has passed.
-          type: string
-          format: date-time
-          readOnly: true
-        goal_cap:
-          title: Goal cap
-          description: Whether scores should be unable to surpass the goal value.
-          type: boolean
-    ChallengeActivityType:
-      required:
-      - activity_type
-      type: object
-      properties:
-        activity_type:
-          title: Activity type
-          type: string
-          enum:
-          - RUNNING
-          - CROSSFIT
-          - CYCLING
-          - SWIMMING
-          - OTHER
-          - ROWING
-          - WALKING
-          - MINDFULNESS
-          - YOGA
-          - STRENGTH_TRAINING
     ChallengeDetail:
       required:
       - title
@@ -1057,6 +916,19 @@ components:
           type: string <iso8601 duration>
           readOnly: true
           minLength: 1
+    ChallengePeriod:
+      type: object
+      properties:
+        start:
+          title: Start
+          type: string
+          format: date-time
+          readOnly: true
+        end:
+          title: End
+          type: string
+          format: date-time
+          readOnly: true
     ProfileAsProfilePublicIdAndTeamAsTeamPublicId:
       required:
       - profile
@@ -1084,23 +956,39 @@ components:
           description: The timestamp when the profile/team joined the challenge.
           type: string
           format: date-time
-    LeaderboardHistory:
+    LeaderboardProfileAndTeam:
+      required:
+      - avatar
       type: object
       properties:
+        name:
+          title: Name
+          type: string
+          readOnly: true
+          minLength: 1
+        public_id:
+          title: Public id
+          type: string
+          format: uuid
+          readOnly: true
+        url:
+          title: Url
+          type: string
+          format: uri
+          readOnly: true
         score:
           title: Score
           type: number
           readOnly: true
-        start:
-          title: Start
-          type: string
-          format: date-time
+        position:
+          title: Position
+          type: integer
           readOnly: true
-        end:
-          title: End
+        avatar:
+          title: Avatar
           type: string
-          format: date-time
-          readOnly: true
+          format: uri
+          minLength: 1
     TeamProfile:
       description: Team of which this profile is a member of
       required:
@@ -1129,6 +1017,191 @@ components:
           - 'null'
           format: uri
           minLength: 1
+    ChallengeList:
+      required:
+      - title
+      - start
+      - type
+      - goal
+      - goal_type
+      - visibility
+      - repetition
+      type: object
+      properties:
+        url:
+          title: Url
+          type: string
+          format: uri
+          readOnly: true
+        public_id:
+          title: Public id
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          title: Title
+          type: string
+          minLength: 1
+        slogan:
+          title: Slogan
+          type: string
+        description:
+          title: Description
+          type: string
+        start:
+          title: Start
+          type: string
+          format: date-time
+        end:
+          title: End
+          type:
+          - string
+          - 'null'
+          format: date-time
+        type:
+          title: Type
+          type: string
+          enum:
+          - INDIVIDUAL
+          - GROUP
+          - TEAM
+        goal:
+          title: Goal
+          type: string
+          enum:
+          - DAILY
+          - TOTAL
+          - WEEKLY
+          - MONTHLY
+        goal_value:
+          title: Goal value
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: -2147483648
+        goal_type:
+          title: Goal type
+          type: string
+          enum:
+          - POINTS
+          - DISTANCE
+          - CALORIES
+          - DURATION
+          - STEPS
+        visibility:
+          title: Visibility
+          type: string
+          enum:
+          - PUBLIC
+          - PRIVATE
+        num_members:
+          title: Num members
+          type: string
+          readOnly: true
+        repetition:
+          title: Repetition
+          type: string
+          enum:
+          - NONE
+          - STREAK
+          - STICKTOIT
+          - GOALBREAKER
+        avatar:
+          title: Avatar
+          type:
+          - string
+          - 'null'
+          format: uri
+          minLength: 1
+        data_source:
+          title: Data source
+          type: string
+          readOnly: true
+          minLength: 1
+        activity_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChallengeActivityType'
+        current_period_start:
+          title: Current period start
+          description: The start (exclusive) of the current period. Null if the challenge has not started yet.
+          type: string
+          format: date-time
+          readOnly: true
+        current_period_end:
+          title: Current period end
+          description: The end (exclusive) of the current period. Null if the challenge end has passed.
+          type: string
+          format: date-time
+          readOnly: true
+        goal_cap:
+          title: Goal cap
+          description: Whether scores should be unable to surpass the goal value.
+          type: boolean
+    LeaderboardHistory:
+      type: object
+      properties:
+        score:
+          title: Score
+          type: number
+          readOnly: true
+        start:
+          title: Start
+          type: string
+          format: date-time
+          readOnly: true
+        end:
+          title: End
+          type: string
+          format: date-time
+          readOnly: true
+    ProfilePublicIdsListAndTeamAsPublicId:
+      required:
+      - profiles
+      type: object
+      properties:
+        profiles:
+          type: array
+          items:
+            type: string
+            format: uuid
+        is_active:
+          title: Is active
+          description: 'Whether profile actively participates in challenge.
+
+
+            While inactive, scores/leaderboard will not be updated but still be visible.'
+          type: boolean
+        team:
+          title: Team
+          description: A team public_id is expected
+          type: string
+          format: uuid
+        joined:
+          title: Joined
+          description: The timestamp when the profile/team joined the challenge.
+          type: string
+          format: date-time
+    ChallengeActivityType:
+      required:
+      - activity_type
+      type: object
+      properties:
+        activity_type:
+          title: Activity type
+          type: string
+          enum:
+          - RUNNING
+          - CROSSFIT
+          - CYCLING
+          - SWIMMING
+          - OTHER
+          - ROWING
+          - WALKING
+          - MINDFULNESS
+          - YOGA
+          - STRENGTH_TRAINING
     LeaderboardProfile:
       required:
       - avatar
@@ -1167,79 +1240,6 @@ components:
           type: string
           readOnly: true
           minLength: 1
-        score:
-          title: Score
-          type: number
-          readOnly: true
-        position:
-          title: Position
-          type: integer
-          readOnly: true
-        avatar:
-          title: Avatar
-          type: string
-          format: uri
-          minLength: 1
-    ChallengePeriod:
-      type: object
-      properties:
-        start:
-          title: Start
-          type: string
-          format: date-time
-          readOnly: true
-        end:
-          title: End
-          type: string
-          format: date-time
-          readOnly: true
-    ProfilePublicIdsListAndTeamAsPublicId:
-      required:
-      - profiles
-      type: object
-      properties:
-        profiles:
-          type: array
-          items:
-            type: string
-            format: uuid
-        is_active:
-          title: Is active
-          description: 'Whether profile actively participates in challenge.
-
-
-            While inactive, scores/leaderboard will not be updated but still be visible.'
-          type: boolean
-        team:
-          title: Team
-          description: A team public_id is expected
-          type: string
-          format: uuid
-        joined:
-          title: Joined
-          description: The timestamp when the profile/team joined the challenge.
-          type: string
-          format: date-time
-    LeaderboardProfileAndTeam:
-      required:
-      - avatar
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-          readOnly: true
-          minLength: 1
-        public_id:
-          title: Public id
-          type: string
-          format: uuid
-          readOnly: true
-        url:
-          title: Url
-          type: string
-          format: uri
-          readOnly: true
         score:
           title: Score
           type: number

@@ -63,6 +63,16 @@ paths:
       deprecated: false
 components:
   schemas:
+    AppConnectionUrl:
+      required:
+      - next
+      type: object
+      properties:
+        next:
+          title: Next
+          type: string
+          format: uri
+          minLength: 1
     ProfileAsProfilePublicId:
       required:
       - profile
@@ -78,16 +88,6 @@ components:
           description: The timestamp when the profile/team joined the challenge.
           type: string
           format: date-time
-    AppConnectionUrl:
-      required:
-      - next
-      type: object
-      properties:
-        next:
-          title: Next
-          type: string
-          format: uri
-          minLength: 1
   securitySchemes:
     Basic:
       type: http

@@ -84,33 +84,6 @@ paths:
         required: true
 components:
   schemas:
-    Notification:
-      required:
-      - title
-      - body
-      type: object
-      properties:
-        title:
-          title: Title
-          type: string
-          maxLength: 512
-          minLength: 1
-        body:
-          title: Body
-          type: string
-          maxLength: 2048
-          minLength: 1
-        schedule:
-          title: Schedule
-          description: date and time to send notification
-          type:
-          - string
-          - 'null'
-          format: date-time
-        link:
-          title: Link
-          type: string
-          maxLength: 1024
     NotificationForProfiles:
       required:
       - title
@@ -145,6 +118,33 @@ components:
             description: The profiles to send the push notification to
             type: string
             format: uuid
+    Notification:
+      required:
+      - title
+      - body
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          maxLength: 512
+          minLength: 1
+        body:
+          title: Body
+          type: string
+          maxLength: 2048
+          minLength: 1
+        schedule:
+          title: Schedule
+          description: date and time to send notification
+          type:
+          - string
+          - 'null'
+          format: date-time
+        link:
+          title: Link
+          type: string
+          maxLength: 1024
   securitySchemes:
     Basic:
       type: http
